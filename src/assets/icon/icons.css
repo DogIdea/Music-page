@@ -1,0 +1,236 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?pzeuvh');
+  src:  url('fonts/icomoon.eot?pzeuvh#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?pzeuvh') format('truetype'),
+    url('fonts/icomoon.woff?pzeuvh') format('woff'),
+    url('fonts/icomoon.svg?pzeuvh#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dayingji:before {
+  content: "\78";
+}
+.icon-qingkongshanchu:before {
+  content: "\e66c";
+}
+.icon-yifuhuanfu:before {
+  content: "\e6e0";
+}
+.icon-date-empty:before {
+  content: "\e673";
+}
+.icon-gouwuche:before {
+  content: "\e62c";
+}
+.icon-wangyiyunyinyuemusic1193417easyiconnet:before {
+  content: "\e650";
+}
+.icon-iconfuzhi:before {
+  content: "\e601";
+}
+.icon-yejianmoshi:before {
+  content: "\e633";
+}
+.icon-paixingbang:before {
+  content: "\e7bd";
+}
+.icon-i-more:before {
+  content: "\e609";
+}
+.icon-shipinbofangyingpian:before {
+  content: "\e78f";
+}
+.icon-yonghu3:before {
+  content: "\e621";
+}
+.icon-naozhong:before {
+  content: "\e62e";
+}
+.icon-shouyinji01:before {
+  content: "\e6e8";
+}
+.icon-saoyisao1:before {
+  content: "\e63e";
+}
+.icon-fujin:before {
+  content: "\e65b";
+}
+.icon-bofang:before {
+  content: "\e77e";
+}
+.icon-zanting:before {
+  content: "\e79f";
+}
+.icon-youjiantou:before {
+  content: "\e628";
+}
+.icon-zuanshi:before {
+  content: "\e669";
+}
+.icon-xiaoxi:before {
+  content: "\e64b";
+}
+.icon-xiaolaba:before {
+  content: "\e64d";
+}
+.icon-gengduo:before {
+  content: "\e614";
+}
+.icon-addfile:before {
+  content: "\e62f";
+}
+.icon-gequfanhui:before {
+  content: "\e610";
+}
+.icon-gequtiaoguo:before {
+  content: "\e611";
+}
+.icon-exit:before {
+  content: "\e616";
+}
+.icon-tubiaozhizuomoban:before {
+  content: "\e605";
+}
+.icon-email:before {
+  content: "\e62d";
+}
+.icon-yinyue:before {
+  content: "\e680";
+}
+.icon-playlist:before {
+  content: "\e602";
+}
+.icon-xunhuanbofang:before {
+  content: "\e66d";
+}
+.icon-danquxunhuan:before {
+  content: "\e66e";
+}
+.icon-erji:before {
+  content: "\e6c8";
+}
+.icon-arrow-bottom:before {
+  content: "\e765";
+}
+.icon-yonghu:before {
+  content: "\e60e";
+}
+.icon-caidan:before {
+  content: "\e63d";
+}
+.icon-fenxiang:before {
+  content: "\e648";
+}
+.icon-guanbi:before {
+  content: "\e64c";
+}
+.icon-shezhi:before {
+  content: "\e65c";
+}
+.icon-icon-music:before {
+  content: "\e642";
+}
+.icon-play:before {
+  content: "\e647";
+}
+.icon-icon-2:before {
+  content: "\e64a";
+}
+.icon-erji-dingshirenwu:before {
+  content: "\eaae";
+}
+.icon-xihuan:before {
+  content: "\e76a";
+}
+.icon-shoucang:before {
+  content: "\e78c";
+}
+.icon-xiazai:before {
+  content: "\e794";
+}
+.icon-sousuo:before {
+  content: "\e600";
+}
+.icon-fanhui:before {
+  content: "\e606";
+}
+.icon-M:before {
+  content: "\f0246";
+}
+.icon-caidan1:before {
+  content: "\e652";
+}
+.icon-diepian:before {
+  content: "\e60f";
+}
+.icon-yinyuewenjian:before {
+  content: "\e74b";
+}
+.icon-yinyuediepian:before {
+  content: "\e74c";
+}
+.icon-fenlei:before {
+  content: "\e67b";
+}
+.icon-fenxiang1:before {
+  content: "\e655";
+}
+.icon-quanqiu:before {
+  content: "\e76c";
+}
+.icon-fenleimenu2:before {
+  content: "\e612";
+}
+.icon-kafei:before {
+  content: "\e61c";
+}
+.icon-jiarugedan:before {
+  content: "\e643";
+}
+.icon-shipin:before {
+  content: "\e63f";
+}
+.icon-paihang:before {
+  content: "\e613";
+}
+.icon-cloud:before {
+  content: "\e615";
+}
+.icon-yinbiao:before {
+  content: "\e603";
+}
+.icon-musicmenu:before {
+  content: "\e61f";
+}
+.icon-pinglun:before {
+  content: "\e60b";
+}
+.icon-zan:before {
+  content: "\e534";
+}
+.icon-shipinbofang:before {
+  content: "\e61e";
+}
+.icon-duoxuan:before {
+  content: "\e640";
+}
+.icon-rili:before {
+  content: "\e706";
+}
