@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from 'react-router-dom';
-
+import axios from 'axios';
 
 //根据路由生成配置
 // RoutersConfig 路由配置
@@ -43,4 +43,22 @@ export function GetAsyncComponent(importComponent){
             return Component ? <Component {...this.props} /> : null
         }
     }
+}
+
+
+//配置axios
+export function Fetch(options) {
+    return new Promise((resolve, reject) => {
+        const instance = axios.create({
+            timeout:30*1000,
+            responseType: "json",
+            headers: { 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+        });
+        instance(options).then((res)=>{
+            resolve(res)
+        }).catch((err) => {
+            console.log(err)
+            reject(err)
+        })
+    })
 }
