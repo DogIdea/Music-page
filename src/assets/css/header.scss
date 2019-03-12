@@ -1,32 +1,66 @@
 .music-header{
     position: fixed;
+    top:0;
+    left:0;
     display: flex;
     height: 1rem;
     width:100%;
     background:#6A5ACD;
     color:#fff;
     flex-direction:row;
-    .icon{
-        width:1rem;
-        flex:0 1 auto;
-        line-height:1rem;
-        text-align: center;
-        font-size: 0.5rem;
-        .iconfont{
-            border:0.02rem solid #fff;
-            border-radius: 0.2rem;
-        }
-        .icon-sousuo{
-            border:0rem;
-        }
-    }
-    .title{
+    font-size:0rem;
+    .header-message{
         flex:1 1 auto;
-        margin-left:0.2rem;
-        align-self:center;
-        font-size:0.35rem;
-        font-weight: bold;
-        font-family: Times, TimesNR, 'New Century Schoolbook',
-     Georgia, 'New York', serif;
+        display: flex;
+        height: 1rem;
+        width:100%;
+        flex-direction:row;
+        justify-content:flex-end;
+        .title{
+            flex:1 1 auto;
+            margin-left:0.2rem;
+            align-self:center;
+            font-size:0.35rem;
+            font-weight: bold;
+            font-family: Times, TimesNR, 'New Century Schoolbook',
+         Georgia, 'New York', serif;
+        }
+        input{
+            width:20%;
+            align-self:center;
+            font-size: 0.35rem;
+            line-height:0.35rem;
+            color:#fff;
+            border-bottom:0.02rem solid #fff;
+            height:0.6rem;
+            padding-right:5%;
+            animation: inputchange 0.5s ease-in 1 alternate forwards;
+        }
+        @keyframes inputchange{
+            100%{
+                width:90%;
+            }
+        }
     }
+    
+}
+.icon,a{
+    width:1rem;
+    flex:0 1 auto;
+    line-height:1rem;
+    text-align: center;
+    color:#fff;
+    font-size: 0.5rem;
+    .cancel{
+        line-height: 0.36rem;
+        font-size:0.36rem;
+        padding:0.05rem;
+    }
+}
+.iconfont{
+    border:0.02rem solid #fff;
+    border-radius: 0.2rem;
+}
+.icon-sousuo{
+    border:0rem;
 }

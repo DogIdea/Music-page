@@ -1,20 +1,16 @@
 import { GetAsyncComponent } from '../utils/utils.jsx';
-const Home = GetAsyncComponent(()=>import('../view/home.jsx'))
-const Music = GetAsyncComponent(()=>import('../view/music.jsx'))
-const HomeMusic = GetAsyncComponent(()=>import('../view/homemusic.jsx'))
-const HomeVideo = GetAsyncComponent(()=>import('../view/homevideo.jsx'))
+const Home = GetAsyncComponent(()=>import('../view/home.jsx'));
+const Music = GetAsyncComponent(()=>import('../view/music.jsx'));
+const Search = GetAsyncComponent(()=>import('../view/search.jsx'));
+const Mine = GetAsyncComponent(()=>import('../view/mine.jsx'));
+const HomeMusic = GetAsyncComponent(()=>import('../components/homemusic.jsx'));
+const HomeVideo = GetAsyncComponent(()=>import('../components/homevideo.jsx'));
 
 const RoutersConfig = [
     {
         path:'/home',
         component:Home,
-        exact: true,
         routes:[
-            {
-                path:'/',
-                component:HomeMusic,
-                exact: true,
-            },
             {
                 path:'/homemusic',
                 component:HomeMusic,
@@ -25,7 +21,22 @@ const RoutersConfig = [
                 component:HomeVideo,
                 exact: true,
             },
+            {
+                path:'/',
+                component:HomeMusic,
+                exact: true,
+            },
         ]
+    },
+    {
+        path:'/search',
+        component:Search,
+        exact: true
+    },
+    {
+        path:'/mine',
+        component:Mine,
+        exact:true
     },
     {
         path:'/music',
