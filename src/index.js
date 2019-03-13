@@ -5,18 +5,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Provider} from 'react-redux'
 import store from './store';
-import {LoadRecommendSongs} from './actions/homedata-action'
-
-
+import {LoadRecommendSongs} from './actions/homedata-action.jsx'
+console.log(store.dispatch(LoadRecommendSongs))
 // import { Provider } from 'react-redux';
 
 
 ReactDOM.render(
-    <Provider store={store}>
+    // <Provider store={store}>
          <App/>
-    </Provider>
+    // </Provider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

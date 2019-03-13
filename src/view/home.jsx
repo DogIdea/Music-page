@@ -3,6 +3,9 @@ import '../assets/css/home.scss';
 import Header from '../components/header.jsx';
 import MenuTab from '../components/menutab.jsx';
 import Footer from '../components/footer.jsx';
+// import { connect } from 'react-redux';
+import {PersonalizedSongs} from '../service/home-service.jsx';
+
 class Home extends React.Component{
     constructor(props) {
         super(props)
@@ -18,7 +21,11 @@ class Home extends React.Component{
         }
     }
     componentDidMount(){
-       console.log(this.props)
+        PersonalizedSongs().then((res)=>{
+            console.log(res.data)
+        })
+       
+    //    console.log(this.props)
     }
     onMenuTab(index){
         let path = this.state.menutabs[index].path;
@@ -39,5 +46,5 @@ class Home extends React.Component{
         )
     }
 }
-
+// export default connect()(Home);
 export default Home;

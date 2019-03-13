@@ -17,7 +17,7 @@ export function PersonalizedSongs() {
 };
 
 //推荐新音乐
-export function  PersonalizedNewSong() {
+export function PersonalizedNewSong() {
     return Fetch({
         url:'/personalized/newsong',
         method:'post'
@@ -25,7 +25,7 @@ export function  PersonalizedNewSong() {
 };
 
 //电台 - 分类
-export function  RadioClassification() {
+export function RadioClassification() {
     return Fetch({
         url:'/dj/catelist',
         method:'post'
@@ -33,7 +33,7 @@ export function  RadioClassification() {
 };
 
 //私人 FM(需要登录)
-export function  PersonalizedFM() {
+export function PersonalizedFm() {
     return Fetch({
         url:'/personal_fm',
         method:'post'
@@ -41,7 +41,7 @@ export function  PersonalizedFM() {
 };
 
 //推荐电台
-export function  PersonalizedNewSong() {
+export function PersonalizedDj() {
     return Fetch({
         url:' /personalized/djprogram',
         method:'post'
@@ -49,7 +49,7 @@ export function  PersonalizedNewSong() {
 };
 
 //推荐节目
-export function  PersonalizedProgram() {
+export function PersonalizedProgram() {
     return Fetch({
         url:' /program/recommend',
         method:'post'
@@ -57,7 +57,7 @@ export function  PersonalizedProgram() {
 };
 
 //独家放送
-export function  ExclusiveDistribution() {
+export function ExclusiveDistribution() {
     return Fetch({
         url:' /personalized/privatecontent',
         method:'post'
