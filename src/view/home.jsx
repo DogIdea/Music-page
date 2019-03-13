@@ -3,7 +3,6 @@ import '../assets/css/home.scss';
 import Header from '../components/header.jsx';
 import MenuTab from '../components/menutab.jsx';
 import Footer from '../components/footer.jsx';
-import {GetSearchList} from '../service/test-service.jsx';
 class Home extends React.Component{
     constructor(props) {
         super(props)
@@ -19,9 +18,7 @@ class Home extends React.Component{
         }
     }
     componentDidMount(){
-        GetSearchList('海阔天空').then((res) => {
-            console.log(res)
-        })
+       console.log(this.props)
     }
     onMenuTab(index){
         let path = this.state.menutabs[index].path;
