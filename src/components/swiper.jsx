@@ -2,31 +2,39 @@ import React from 'react';
 import Swiper from 'swiper/dist/js/swiper.js';
 import 'swiper/dist/css/swiper.min.css';
 
-class Footer extends React.Component{
+class NewSwiper extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            test:'swiper'
+        
         }
     }
     componentDidMount(){
-        console.log("music加载了")
+       console.log("swiper挂载了")
+       new Swiper('swiper-container',{
+            loop: true,     
+            autoplay:{   
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+       })
     }
     render() {
         return (
-            <footer  className="music-bottom">
-                {
-                    this.state.footericon.map(function({iconname,path}){
-                        return (
-                                <NavLink to={path} className="icon" key={iconname} activeClassName='iconselect'>
-                                    <i className={'icon-'+iconname}></i>
-                                </NavLink>
-                        )
-                    })
-                }
-            </footer>
+            <div className="swiper-container">
+                <div className="swiper-wrapper">
+                    <div className="swiper-slide">Slide 1</div>
+                    <div className="swiper-slide">Slide 2</div>
+                    <div className="swiper-slide">Slide 3</div>
+                </div>
+                <div className='swiper-pagination'></div>
+            </div>
         )
     }
 }
 
-export default Footer;
+export default NewSwiper;

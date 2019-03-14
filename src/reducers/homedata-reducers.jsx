@@ -1,5 +1,5 @@
 
-const homeData = function (state={},action) {
+const homeData = (state={},action)=>{
     switch(action.type){
         case 'LOAD_RECOMMENDSONG':
             return {

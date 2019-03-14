@@ -1,4 +1,5 @@
 import React from 'react';
+import NewSwiper from './swiper';
 
 class HomeMusic extends React.Component{
     constructor(props) {
@@ -12,7 +13,9 @@ class HomeMusic extends React.Component{
     }
     render() {
         return (
-            <div>this is music</div>
+            <div>this is music
+                <NewSwiper></NewSwiper>
+            </div>
         )
     }
 }
