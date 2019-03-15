@@ -1,12 +1,10 @@
 import {PersonalizedSongs} from '../service/home-service.jsx';
 
-export const LoadRecommendSongs = (dispatch) =>{
-    const res = PersonalizedSongs().then((res)=>{
-        return res.data
-    })
-    console.log(res)
+export const LoadRecommendSongs = async (dispatch) =>{
+    const res = await PersonalizedSongs()
+    console.log(res.data)
     dispatch({
         type:'LOAD_RECOMMENDSONG',
-        data:res.result
+        data:res.data.result
     })
 }
