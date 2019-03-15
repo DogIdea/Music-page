@@ -1,6 +1,5 @@
 import React from 'react';
 import NewSwiper from './swiper';
-import '../assets/css/homemusic.scss';
 
 class HomeMusic extends React.Component{
     constructor(props) {
