@@ -1,5 +1,6 @@
 .music-header{
     position: fixed;
+    flex-direction:row;
     top:0;
     left:0;
     display: flex;
@@ -7,7 +8,6 @@
     width:100%;
     background:#6A5ACD;
     color:#fff;
-    flex-direction:row;
     font-size:0rem;
     .header-message{
         flex:1 1 auto;

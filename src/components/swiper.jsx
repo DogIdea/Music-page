@@ -6,32 +6,41 @@ class NewSwiper extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-        
+            
         }
     }
     componentDidMount(){
-       console.log("swiper挂载了")
-       new Swiper('swiper-container',{
-            loop: true,     
+       console.log(this.props)
+       new Swiper('.swiper-container',{
+        loop: true,     
             autoplay:{   
-                delay: 2500,
+                delay: 3000,
                 disableOnInteraction: false,
             },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true
             },
-       })
+        })
     }
     render() {
+        const itemimg=this.props.styleclassname.itemimg
         return (
-            <div className="swiper-container">
-                <div className="swiper-wrapper">
-                    <div className="swiper-slide">Slide 1</div>
-                    <div className="swiper-slide">Slide 2</div>
-                    <div className="swiper-slide">Slide 3</div>
+            <div className={this.props.styleclassname.banner}>
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        {
+                            this.props.swiperimage.map(function({url,text}){
+                                return(
+                                    <div className="swiper-slide" key={text}>
+                                        <img className={itemimg} src={require('../assets/img/swiper/'+url+'.jpg')} alt={text}/>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className='swiper-pagination'></div>
                 </div>
-                <div className='swiper-pagination'></div>
             </div>
         )
     }
