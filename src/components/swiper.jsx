@@ -10,7 +10,7 @@ class NewSwiper extends React.Component{
         }
     }
     componentDidMount(){
-       console.log(this.props)
+       //传入的classname要带.
        new Swiper('.swiper-container',{
         loop: true,     
             autoplay:{   

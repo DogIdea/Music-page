@@ -11,19 +11,21 @@ class Home extends React.Component{
         super(props)
         this.state = {
             menutabs: [
-                { path: '/home/homemusic', text: '歌曲推荐' },
-                { path: '/home/homevideo', text: '个性电台' }
+                { path: '/home/homemusic', text: '歌曲推荐'},
+                { path: '/home/homevideo', text: '个性电台'}
             ],
+            index:0,
             sign:{
                 name:'home',
                 path:'/search'
             }
         }
     }
-    componentDidMount(){
+    componentWillMount(){
        this.props.dispatch(LoadRecommendSongs)
     }
     onMenuTab(index){
+        console.log(this.props.location.pathname)
         let path = this.state.menutabs[index].path;
         this.props.history.push(path);
     }
@@ -32,7 +34,7 @@ class Home extends React.Component{
             <div>
                 <div className="home-header">
                   <Header sign={this.state.sign}></Header>
-                  <MenuTab menutabs={this.state.menutabs} onMenuTab={(index) => {this.onMenuTab(index)}}></MenuTab>
+                  <MenuTab menutabs={this.state.menutabs}  {...this.props} index={this.state.index} onMenuTab={(index) => {this.onMenuTab(index)}}></MenuTab>
                 </div>
                 <div className="home-body">
                   {this.props.children}
