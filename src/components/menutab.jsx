@@ -6,7 +6,8 @@ class MenuTab extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            animation:0
+            animation:0,
+            start:''
         }
     }
     componentWillMount(){
@@ -25,8 +26,9 @@ class MenuTab extends React.Component{
     }
     onMenuTab(e){
         e.persist();//以异步方式访问属性，因为this.state为异步
+        let className=['menu-animation-last','menu-animation-first']
         this.setState({
-            animation:e._targetInst.index
+            start:className[e._targetInst.index]
         })
         this.props.onMenuTab(e._targetInst.index)
     }
@@ -40,7 +42,7 @@ class MenuTab extends React.Component{
                     })
                 }
               </ul>
-              <div className={['menu-slider',this.state.animation === 0 ? 'menu-animation-last' : 'menu-animation-first'].join(' ')}></div>
+              <div className={['menu-slider',this.state.animation === 0 && !this.state.start ? 'menu-slider-first' : this.state.animation === 1 ? 'menu-slider-last' : '',this.state.start].join(' ')}></div>
               
             </header>
         )

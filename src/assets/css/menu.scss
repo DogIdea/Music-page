@@ -27,11 +27,17 @@
         background:#fff;
         border-radius: 0.2rem;
     }
+    .menu-slider-first{
+        left:25%;
+    }
+    .menu-slider-last{
+        left:75%;
+    }
     .menu-animation-first{
         left:25%;
         animation: menutapfirst 0.5s ease-in 1 alternate forwards;
     }
-    .menu-animation-last{
+    .menu-animation-last{ 
         left:75%;
         animation: menutaplast 0.5s ease-in 1 alternate forwards;
     }
