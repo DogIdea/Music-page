@@ -3,7 +3,7 @@ import '../assets/css/home.scss';
 import Header from '../components/header.jsx';
 import MenuTab from '../components/menutab.jsx';
 import Footer from '../components/footer.jsx';
-import {LoadRecommendSongs} from '../actions/homedata-action.jsx';
+import {LoadPersonalizedSongs,LoadTopPlayList} from '../actions/homedata-action.jsx';
 import { connect } from 'react-redux';
 
 class Home extends React.Component{
@@ -21,9 +21,9 @@ class Home extends React.Component{
             }
         }
     }
-    componentWillMount(){
-       this.props.dispatch(LoadRecommendSongs)
-    }
+    componentDidMount(){
+        this.props.dispatch(LoadPersonalizedSongs,LoadTopPlayList)
+     }
     onMenuTab(index){
         console.log(this.props.location.pathname)
         let path = this.state.menutabs[index].path;
@@ -45,8 +45,9 @@ class Home extends React.Component{
     }
 }
 const mapStateToProps = (state) =>{
+    console.log(state)
     return{
-        homedata: state.homeData
+        homedata: state
     }
 }
 export default connect(mapStateToProps)(Home);

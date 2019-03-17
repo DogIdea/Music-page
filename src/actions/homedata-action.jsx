@@ -1,10 +1,17 @@
-import {PersonalizedSongs} from '../service/home-service.jsx';
+import {PersonalizedSongs,TopPlayList} from '../service/home-service.jsx';
 
-export const LoadRecommendSongs = async (dispatch) =>{
-    const res = await PersonalizedSongs()
-    console.log(res.data)
+export const LoadPersonalizedSongs = async (dispatch) =>{
+    const res = await PersonalizedSongs(6)
     dispatch({
-        type:'LOAD_RECOMMENDSONG',
-        data:res.data.result
+        type:'PERSONALIZED_SONGS',
+        songdata:res.data
+    })
+}
+
+export const LoadTopPlayList = async (dispatch) =>{
+    const res = await TopPlayList(6)
+    dispatch({
+        type:'TOP_PLAYLIST',
+        newsongdata:res.data
     })
 }

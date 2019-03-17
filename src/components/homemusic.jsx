@@ -1,5 +1,7 @@
 import React from 'react';
 import NewSwiper from './swiper';
+import { connect } from 'react-redux';
+
 
 class HomeMusic extends React.Component{
     constructor(props) {
@@ -23,7 +25,9 @@ class HomeMusic extends React.Component{
             ]
         }
     }
+    
     render() {
+        console.log(1)
         return (
             <div className="home-music">
                 <NewSwiper styleclassname={this.state.styleclassname} swiperimage={this.state.swiperimage}></NewSwiper>
@@ -48,14 +52,20 @@ class HomeMusic extends React.Component{
                         <i className="iconfont icon-youjiantou"></i>
                     </div>
                     <ul className="content-component">
-                        <li className="content-item">
-                            <div className="item-img" ></div>
-                            <span className="item-label">
-                            <i className="iconfont icon-erji"></i>
-                                这是一张图片
-                            </span>
-                            <span className="item-title">这是一张图片非常好看的图片</span>
-                        </li>
+                        {/* {
+                            homemusicdata.playlists.map(function({coverImgUrl,subscribedCount,name}){
+                                return (
+                                    <li className="content-item" key={name}>
+                                        <img className="item-img" src={coverImgUrl} alt={name}/>
+                                        <span className="item-label">
+                                        <i className="iconfont icon-erji"></i>
+                                            {subscribedCount}
+                                        </span>
+                                        <span className="item-title">{name}</span>
+                                    </li>
+                                )
+                            })
+                        } */}
                     </ul>
                 </div>
                 <div className="content-body">
@@ -79,4 +89,4 @@ class HomeMusic extends React.Component{
     }
 }
 
-export default HomeMusic;
+export default connect()(HomeMusic);

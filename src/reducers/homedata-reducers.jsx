@@ -1,11 +1,15 @@
-
-const homeData = (state={data:{}},action)=>{
+const homeData = (state={songdata:{},newsongdata:{}},action)=>{
     console.log(action)
     switch(action.type){
-        case 'LOAD_RECOMMENDSONG':
+        case 'PERSONALIZED_SONGS':
             return {
                 ...state,
-                data:action.data
+                songdata:action.songdata
+            }
+        case 'TOP_PLAYLIST':
+            return {
+                ...state,
+                newsongdata:action.newsongdata
             }
         default:
             return state
