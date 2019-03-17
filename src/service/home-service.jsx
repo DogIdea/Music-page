@@ -1,4 +1,5 @@
 import {Fetch} from "../utils/utils.jsx";
+import qs from 'qs';
 
 //获取每日推荐歌曲(需要登录)
 export function RecommendSongs() {
@@ -9,12 +10,27 @@ export function RecommendSongs() {
 };
 
 //推荐歌单
-export function PersonalizedSongs() {
+export function PersonalizedSongs(limit) {
     return Fetch({
         url:'/personalized',
-        method:'post'
+        method:'post',
+        data:qs.stringify({
+            limit:limit
+        })
     })
 };
+
+//精选歌单
+export function TopPlayList(limit,order){
+    return Fetch({
+        url:'/top/playlist',
+        method:'post',
+        data:qs.stringify({
+            limit:limit,
+            order:order
+        })
+    })
+}
 
 //推荐新音乐
 export function PersonalizedNewSong() {

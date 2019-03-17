@@ -49,15 +49,29 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                         <li className="content-item">
-                            <img className="item-img" src="" alt=""/>
-                            <span className="item-label"></span>
-                            <span className="item-title"></span>
+                            <div className="item-img" ></div>
+                            <span className="item-label">
+                            <i className="iconfont icon-erji"></i>
+                                这是一张图片
+                            </span>
+                            <span className="item-title">这是一张图片非常好看的图片</span>
                         </li>
-                        <li className="content-item"></li>
-                        <li className="content-item"></li>
-                        <li className="content-item"></li>
-                        <li className="content-item"></li>
-                        <li className="content-item"></li>
+                    </ul>
+                </div>
+                <div className="content-body">
+                    <div className="content-title">
+                        推荐新音乐
+                        <i className="iconfont icon-youjiantou"></i>
+                    </div>
+                    <ul className="content-component">
+                        <li className="content-item">
+                            <div className="item-img" ></div>
+                            <span className="item-label">
+                            <i className="iconfont icon-erji"></i>
+                                这是一张图片
+                            </span>
+                            <span className="item-title">这是一张图片非常好看的图片</span>
+                        </li>
                     </ul>
                 </div>
             </div>
