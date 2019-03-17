@@ -25,9 +25,11 @@ class HomeMusic extends React.Component{
             ]
         }
     }
-    
+    componentWillMount(){
+        console.log("子元素的componentWillMount")
+    }
     render() {
-        console.log(1)
+        console.log("子元素的render")
         return (
             <div className="home-music">
                 <NewSwiper styleclassname={this.state.styleclassname} swiperimage={this.state.swiperimage}></NewSwiper>

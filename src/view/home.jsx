@@ -21,8 +21,11 @@ class Home extends React.Component{
             }
         }
     }
-    componentDidMount(){
-        this.props.dispatch(LoadPersonalizedSongs,LoadTopPlayList)
+    componentWillMount(){
+        this.props.dispatch(LoadPersonalizedSongs)
+        this.props.dispatch(LoadTopPlayList)
+        console.log(this.props)
+        console.log("父元素的componentWillMount")
      }
     onMenuTab(index){
         console.log(this.props.location.pathname)
@@ -30,6 +33,7 @@ class Home extends React.Component{
         this.props.history.push(path);
     }
     render() {
+        console.log("父元素的render")
         return (
             <div>
                 <div className="home-header">
@@ -44,6 +48,7 @@ class Home extends React.Component{
         )
     }
 }
+
 const mapStateToProps = (state) =>{
     console.log(state)
     return{
