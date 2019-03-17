@@ -24,23 +24,23 @@ class HomeVideo extends React.Component{
     }
     render() {
         return (
-            <div>
+            <div className="home-video">
                 <NewSwiper styleclassname={this.state.styleclassname} swiperimage={this.state.swiperimage}></NewSwiper>
-                <div className='home-music-menu'>
+                <div className="home-music-menu">
                     {
                         this.state.menuicon.map(function({iconname,text}){
                             return (
                                 <div key={text}>
-                                    <div className='menu-icon'>
+                                    <div className="menu-icon">
                                         <i className={['iconfont',iconname].join(' ')}></i>
                                     </div>
-                                    <span className='menu-text'>{text}</span>
+                                    <span className="menu-text">{text}</span>
                                 </div>
                             )
                         })
                     }
-                    
                 </div>
+                <div className="menu-border"></div>
             </div>
         )
     }

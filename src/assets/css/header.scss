@@ -1,12 +1,14 @@
+@import './utils.scss';
 .music-header{
     position: fixed;
+    z-index:5;
     flex-direction:row;
     top:0;
     left:0;
     display: flex;
     height: 1rem;
     width:100%;
-    background:#6A5ACD;
+    background:$bgColor;
     color:#fff;
     font-size:0rem;
     .header-message{

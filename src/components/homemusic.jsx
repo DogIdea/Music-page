@@ -25,22 +25,40 @@ class HomeMusic extends React.Component{
     }
     render() {
         return (
-            <div>
+            <div className="home-music">
                 <NewSwiper styleclassname={this.state.styleclassname} swiperimage={this.state.swiperimage}></NewSwiper>
-                <div className='home-music-menu'>
+                <div className="home-music-menu">
                     {
                         this.state.menuicon.map(function({iconname,text}){
                             return (
                                 <div key={text}>
-                                    <div className='menu-icon'>
+                                    <div className="menu-icon">
                                         <i className={['iconfont',iconname].join(' ')}></i>
                                     </div>
-                                    <span className='menu-text'>{text}</span>
+                                    <span className="menu-text">{text}</span>
                                 </div>
                             )
                         })
                     }
-                    
+                </div>
+                <div className="menu-border"></div>
+                <div className="content-body">
+                    <div className="content-title">
+                        推荐歌单
+                        <i className="iconfont icon-youjiantou"></i>
+                    </div>
+                    <ul className="content-component">
+                        <li className="content-item">
+                            <img className="item-img" src="" alt=""/>
+                            <span className="item-label"></span>
+                            <span className="item-title"></span>
+                        </li>
+                        <li className="content-item"></li>
+                        <li className="content-item"></li>
+                        <li className="content-item"></li>
+                        <li className="content-item"></li>
+                        <li className="content-item"></li>
+                    </ul>
                 </div>
             </div>
         )

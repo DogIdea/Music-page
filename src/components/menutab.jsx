@@ -13,7 +13,6 @@ class MenuTab extends React.Component{
     componentWillMount(){
         let historypath = this.props.history.location.pathname
         let path = this.props.menutabs[1].path
-        
         if(historypath === path){
             this.setState({
                 animation:1

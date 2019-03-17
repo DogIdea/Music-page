@@ -1,3 +1,4 @@
+@import './utils.scss';
 .music-bottom{
     position: fixed;
     bottom:0;
@@ -7,16 +8,16 @@
     width:100%;
     background:#fff;
     flex-direction:row;
-    border-top:0.02rem solid #e6e6fa;
+    border-top:0.02rem solid $bdColor;
     .icon{
         width:25%;
         flex:0 1 auto;
         line-height:1rem;
         text-align: center;
-        color:#e6e6fa;
+        color:$bdColor;
         font-size: 0.5rem;
     }
     .iconselect{
-        color:#6A5ACD;
+        color:$bgColor;
     }
 }

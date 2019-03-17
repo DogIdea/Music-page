@@ -1,9 +1,11 @@
+@import './utils.scss';
 .menu-top{
     position: fixed;
+    z-index:5;
     top:0.9rem;
     height: 1rem;
     width:100%;
-    background:#6A5ACD;
+    background:$bgColor;
     color:#fff;
     .menu-title{
         width:100%;
