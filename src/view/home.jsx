@@ -3,7 +3,7 @@ import '../assets/css/home.scss';
 import Header from '../components/header.jsx';
 import MenuTab from '../components/menutab.jsx';
 import Footer from '../components/footer.jsx';
-import {LoadPersonalizedSongs,LoadTopPlayList} from '../actions/homedata-action.jsx';
+
 import { connect } from 'react-redux';
 
 class Home extends React.Component{
@@ -22,9 +22,6 @@ class Home extends React.Component{
         }
     }
     componentWillMount(){
-        this.props.dispatch(LoadPersonalizedSongs)
-        this.props.dispatch(LoadTopPlayList)
-        console.log(this.props)
         console.log("父元素的componentWillMount")
      }
     onMenuTab(index){
@@ -33,6 +30,7 @@ class Home extends React.Component{
         this.props.history.push(path);
     }
     render() {
+        
         console.log("父元素的render")
         return (
             <div>
@@ -49,10 +47,5 @@ class Home extends React.Component{
     }
 }
 
-const mapStateToProps = (state) =>{
-    console.log(state)
-    return{
-        homedata: state
-    }
-}
-export default connect(mapStateToProps)(Home);
+
+export default connect()(Home);

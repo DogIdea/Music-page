@@ -1,6 +1,7 @@
 import React from 'react';
 import NewSwiper from './swiper';
 import { connect } from 'react-redux';
+import {LoadPersonalizedSongs,LoadTopPlayList} from '../actions/homedata-action.jsx';
 
 
 class HomeMusic extends React.Component{
@@ -26,9 +27,14 @@ class HomeMusic extends React.Component{
         }
     }
     componentWillMount(){
+        this.props.dispatch(LoadPersonalizedSongs)
+        this.props.dispatch(LoadTopPlayList)
         console.log("子元素的componentWillMount")
     }
     render() {
+        const songdata = this.props.homedata.homeData.songdata ? this.props.homedata.homeData.songdata : {}
+        const newsongdata =  this.props.homedata.homeData.newsongdata ? this.props.homedata.homeData.newsongdata :{}
+        console.log(songdata,newsongdata)
         console.log("子元素的render")
         return (
             <div className="home-music">
@@ -54,20 +60,20 @@ class HomeMusic extends React.Component{
                         <i className="iconfont icon-youjiantou"></i>
                     </div>
                     <ul className="content-component">
-                        {/* {
-                            homemusicdata.playlists.map(function({coverImgUrl,subscribedCount,name}){
+                        {
+                            newsongdata.playlists ? newsongdata.playlists.map(function({coverImgUrl,subscribedCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={coverImgUrl} alt={name}/>
                                         <span className="item-label">
-                                        <i className="iconfont icon-erji"></i>
+                                            <i className="iconfont icon-erji"></i>
                                             {subscribedCount}
                                         </span>
                                         <span className="item-title">{name}</span>
                                     </li>
                                 )
-                            })
-                        } */}
+                            }) : []
+                        }
                     </ul>
                 </div>
                 <div className="content-body">
@@ -76,19 +82,30 @@ class HomeMusic extends React.Component{
                         <i className="iconfont icon-youjiantou"></i>
                     </div>
                     <ul className="content-component">
-                        <li className="content-item">
-                            <div className="item-img" ></div>
-                            <span className="item-label">
-                            <i className="iconfont icon-erji"></i>
-                                这是一张图片
-                            </span>
-                            <span className="item-title">这是一张图片非常好看的图片</span>
-                        </li>
+                    {
+                            songdata.result ? songdata.result.map(function({picUrl,playCount,name}){
+                                return (
+                                    <li className="content-item" key={name}>
+                                        <img className="item-img" src={picUrl} alt={name}/>
+                                        <span className="item-label">
+                                            <i className="iconfont icon-erji"></i>
+                                            {playCount}
+                                        </span>
+                                        <span className="item-title">{name}</span>
+                                    </li>
+                                )
+                            }) : []
+                        }
                     </ul>
                 </div>
             </div>
         )
     }
 }
+const mapStateToProps = (state) =>{
+    return{
+        homedata: state
+    }
+}
 
-export default connect()(HomeMusic);
+export default connect(mapStateToProps)(HomeMusic);
