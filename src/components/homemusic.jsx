@@ -32,9 +32,9 @@ class HomeMusic extends React.Component{
         console.log("子元素的componentWillMount")
     }
     render() {
-        const songdata = this.props.homedata.homeData.songdata ? this.props.homedata.homeData.songdata : {}
-        const newsongdata =  this.props.homedata.homeData.newsongdata ? this.props.homedata.homeData.newsongdata :{}
-        console.log(songdata,newsongdata)
+        const personalizedsongs = this.props.homedata.homeData.personalizedsongs ? this.props.homedata.homeData.personalizedsongs : {}
+        const topplaylist =  this.props.homedata.homeData.topplaylist ? this.props.homedata.homeData.topplaylist :{}
+        console.log(personalizedsongs,topplaylist)
         console.log("子元素的render")
         return (
             <div className="home-music">
@@ -61,7 +61,7 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                         {
-                            newsongdata.playlists ? newsongdata.playlists.map(function({coverImgUrl,subscribedCount,name}){
+                            topplaylist.playlists ? topplaylist.playlists.map(function({coverImgUrl,subscribedCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={coverImgUrl} alt={name}/>
@@ -83,13 +83,13 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                     {
-                            songdata.result ? songdata.result.map(function({picUrl,playCount,name}){
+                            personalizedsongs.result ? personalizedsongs.result.map(function({picUrl,trackCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={picUrl} alt={name}/>
                                         <span className="item-label">
                                             <i className="iconfont icon-erji"></i>
-                                            {playCount}
+                                            {trackCount}
                                         </span>
                                         <span className="item-title">{name}</span>
                                     </li>
