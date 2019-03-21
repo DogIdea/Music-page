@@ -142,10 +142,14 @@ a{
                         flex: 1 1 auto;
                         .item-name{
                             display: block;
-                            height:0.8rem;
-                            line-height:0.8rem;
-                            font-size:0.5rem;
+                            height:0.4rem;
+                            line-height:0.4rem;
+                            font-size:0.4rem;
                             font-family: 'PingFang SC','SimHei';
+                            width:7rem;
+                            overflow:hidden;
+                            text-overflow:ellipsis;
+                            white-space:nowrap;
                         }
                         .item-hot{
                             display: block;

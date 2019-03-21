@@ -56,14 +56,14 @@ class HomeVideo extends React.Component{
                         今日优选
                     </div>
                     <ul className="content-list">
-                        {/* {
-                            personalizedprogram.programs ? personalizedprogram.programs.map(function(description,coverUrl,commentCount){
+                        {
+                            personalizedprogram.programs ? personalizedprogram.programs.map(function({name,coverUrl,commentCount}){
                                 return (
-                                    <li className="content-item" key={description}>
-                                        <img className="item-img" src={coverUrl} alt={description}/>
+                                    <li className="content-item" key={name}>
+                                        <img className="item-img" src={coverUrl} alt={name}/>
                                         <div className="item-content">
                                             <div className="item-title">
-                                                <span className="item-name">{description}</span>
+                                                <span className="item-name">{name}</span>
                                                 <span className="item-hot">
                                                     <i className="iconfont icon-shoucang"></i>
                                                     {commentCount}
@@ -74,7 +74,7 @@ class HomeVideo extends React.Component{
                                     </li>
                                 )
                             }) : []
-                        } */}
+                        }
                         
                     </ul>
                 </div>
