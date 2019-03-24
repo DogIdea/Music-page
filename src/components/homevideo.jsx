@@ -29,8 +29,8 @@ class HomeVideo extends React.Component{
         this.props.dispatch(LoadPersonalizedProgram)
     }
     render() {
-        const personalizeddj = this.props.homedata.homeData.personalizeddj ? this.props.homedata.homeData.personalizeddj : {}
-        const personalizedprogram = this.props.homedata.homeData.personalizedprogram ? this.props.homedata.homeData.personalizedprogram : {}
+        const personalizeddj = this.props.homedata.homeData.hasOwnProperty('personalizeddj') ? this.props.homedata.homeData.personalizeddj : {}
+        const personalizedprogram = this.props.homedata.homeData.hasOwnProperty('personalizedprogram') ? this.props.homedata.homeData.personalizedprogram : {}
         console.log(personalizeddj,personalizedprogram.programs)
         console.log('子元素的render')
         return (
@@ -57,9 +57,9 @@ class HomeVideo extends React.Component{
                     </div>
                     <ul className="content-list">
                         {
-                            personalizedprogram.programs ? personalizedprogram.programs.map(function({name,coverUrl,commentCount}){
+                            personalizedprogram.hasOwnProperty('programs') ? personalizedprogram.programs.map(function({name,coverUrl,commentCount}){
                                 return (
-                                    <li className="content-item" key={coverUrl}>
+                                    <li className="content-item menu-border" key={coverUrl}>
                                         <img className="item-img" src={coverUrl} alt={name}/>
                                         <div className="item-content">
                                             <div className="item-title">
@@ -85,7 +85,7 @@ class HomeVideo extends React.Component{
                     </div>
                     <ul className="content-component">
                     {
-                            personalizeddj.result ? personalizeddj.result.map(function({picUrl,program,name}){
+                            personalizeddj.hasOwnProperty('result') ? personalizeddj.result.map(function({picUrl,program,name}){
                                 return (
                                     <li className="content-item" key={picUrl}>
                                         <img className="item-img" src={picUrl} alt={name}/>
