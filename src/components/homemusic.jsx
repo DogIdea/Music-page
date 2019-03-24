@@ -32,8 +32,8 @@ class HomeMusic extends React.Component{
         console.log("子元素的componentWillMount")
     }
     render() {
-        const personalizedsongs = this.props.homedata.homeData.personalizedsongs ? this.props.homedata.homeData.personalizedsongs : {}
-        const topplaylist =  this.props.homedata.homeData.topplaylist ? this.props.homedata.homeData.topplaylist :{}
+        const personalizedsongs = this.props.homedata.homeData.hasOwnProperty("personalizedsongs") ? this.props.homedata.homeData.personalizedsongs : {}
+        const topplaylist =  this.props.homedata.homeData.hasOwnProperty("topplaylist") ? this.props.homedata.homeData.topplaylist :{}
         console.log(personalizedsongs,topplaylist)
         console.log("子元素的render")
         return (
@@ -61,7 +61,7 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                         {
-                            topplaylist.playlists ? topplaylist.playlists.map(function({coverImgUrl,subscribedCount,name}){
+                            topplaylist.hasOwnProperty("playlists") ? topplaylist.playlists.map(function({coverImgUrl,subscribedCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={coverImgUrl} alt={name}/>
@@ -83,7 +83,7 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                     {
-                            personalizedsongs.result ? personalizedsongs.result.map(function({picUrl,trackCount,name}){
+                            personalizedsongs.hasOwnProperty("result") ? personalizedsongs.result.map(function({picUrl,trackCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={picUrl} alt={name}/>

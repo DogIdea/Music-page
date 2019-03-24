@@ -59,7 +59,7 @@ class HomeVideo extends React.Component{
                         {
                             personalizedprogram.programs ? personalizedprogram.programs.map(function({name,coverUrl,commentCount}){
                                 return (
-                                    <li className="content-item" key={name}>
+                                    <li className="content-item" key={coverUrl}>
                                         <img className="item-img" src={coverUrl} alt={name}/>
                                         <div className="item-content">
                                             <div className="item-title">
@@ -87,7 +87,7 @@ class HomeVideo extends React.Component{
                     {
                             personalizeddj.result ? personalizeddj.result.map(function({picUrl,program,name}){
                                 return (
-                                    <li className="content-item" key={name}>
+                                    <li className="content-item" key={picUrl}>
                                         <img className="item-img" src={picUrl} alt={name}/>
                                         <span className="item-label">
                                             <i className="iconfont icon-erji"></i>
