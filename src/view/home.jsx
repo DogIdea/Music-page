@@ -16,6 +16,7 @@ class Home extends React.Component{
             ],
             index:0,
             sign:{
+                title:'个人音乐测试',
                 name:'home',
                 path:'/search'
             }

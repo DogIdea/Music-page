@@ -17,7 +17,7 @@ class Header extends React.Component{
               <div className="icon">
                 <i className="iconfont icon-M"></i>
               </div>
-              <div className="title">{this.state.title}</div>
+              <div className="title">{this.props.sign.title}</div>
             </div>
             )
             HeaderIcon =(

@@ -3,6 +3,7 @@ const Home = GetAsyncComponent(()=>import('../view/home.jsx'));
 const Music = GetAsyncComponent(()=>import('../view/music.jsx'));
 const Search = GetAsyncComponent(()=>import('../view/search.jsx'));
 const Mine = GetAsyncComponent(()=>import('../view/mine.jsx'));
+const SongSheet = GetAsyncComponent(()=>import('../view/songsheet.jsx'));
 const HomeMusic = GetAsyncComponent(()=>import('../components/homemusic.jsx'));
 const HomeVideo = GetAsyncComponent(()=>import('../components/homevideo.jsx'));
 
@@ -43,6 +44,11 @@ const RoutersConfig = [
         component:Music,
         exact: true
     },
+    {
+        path:'/songsheet',
+        component:SongSheet,
+        exact:true
+    }
 ]
 
 export default RoutersConfig
