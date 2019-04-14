@@ -1,6 +1,7 @@
 import React from 'react';
 import NewSwiper from './swiper';
 import { connect } from 'react-redux';
+import {Expect} from '../utils/utils.jsx';
 import {LoadPersonalizedSongs,LoadTopPlayList} from '../actions/homedata-action.jsx';
 
 
@@ -30,6 +31,12 @@ class HomeMusic extends React.Component{
         this.props.dispatch(LoadPersonalizedSongs)
         this.props.dispatch(LoadTopPlayList)
         console.log("子元素的componentWillMount")
+    }
+    shouldComponentUpdate(){
+        if(!this.props.homedata.homeData.personalizedsongs.hasOwnProperty('result') &&  !this.props.homedata.homeData.topplaylist.hasOwnProperty('playlists')){
+            return false
+        }
+        return true
     }
     render() {
         const personalizedsongs = this.props.homedata.homeData.hasOwnProperty('personalizedsongs') ? this.props.homedata.homeData.personalizedsongs : {}
@@ -61,13 +68,13 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                         {
-                            topplaylist.hasOwnProperty('playlists') ? topplaylist.playlists.map(function({coverImgUrl,subscribedCount,name}){
+                            topplaylist.hasOwnProperty('playlists') ? topplaylist.playlists.map(function({coverImgUrl,playCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={coverImgUrl} alt={name}/>
                                         <span className="item-label">
                                             <i className="iconfont icon-erji"></i>
-                                            {subscribedCount}
+                                            {Expect(playCount)}
                                         </span>
                                         <span className="item-title">{name}</span>
                                     </li>
@@ -83,13 +90,13 @@ class HomeMusic extends React.Component{
                     </div>
                     <ul className="content-component">
                     {
-                            personalizedsongs.hasOwnProperty('result') ? personalizedsongs.result.map(function({picUrl,trackCount,name}){
+                            personalizedsongs.hasOwnProperty('result') ? personalizedsongs.result.map(function({picUrl,playCount,name}){
                                 return (
                                     <li className="content-item" key={name}>
                                         <img className="item-img" src={picUrl} alt={name}/>
                                         <span className="item-label">
                                             <i className="iconfont icon-erji"></i>
-                                            {trackCount}
+                                            {Expect(playCount)}
                                         </span>
                                         <span className="item-title">{name}</span>
                                     </li>

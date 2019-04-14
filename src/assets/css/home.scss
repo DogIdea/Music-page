@@ -157,11 +157,12 @@ a{
                         }
                     }
                     .icon-play{
+                        margin-right:0.4rem;
                         display: block;
                         height:0.8rem;
                         line-height:0.8rem;
-                        font-size:0.8rem;
-                        color:$bdColor
+                        font-size:0.4rem;
+                        color:$iconColor;
                     }
                 }
             }

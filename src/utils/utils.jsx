@@ -45,6 +45,18 @@ export function GetAsyncComponent(importComponent){
     }
 }
 
+//用于输出是否超过10000以上播放次数
+export function Expect(number){
+    if(isNaN(number) && !(typeof(number) == 'number')){
+        return;
+    }
+    let numStr = number.toString()
+    if(numStr.length>4){
+        let decimal = numStr.substring(numStr.length-4,numStr.length-3)
+        return parseFloat(parseInt(number/10000)+'.'+ decimal )+'万'
+    }
+    return number;
+}
 
 //配置axios
 export function Fetch(options) {

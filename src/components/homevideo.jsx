@@ -2,6 +2,7 @@ import React from 'react';
 import NewSwiper from './swiper';
 import { connect } from 'react-redux';
 import {LoadPersonalizedDj,LoadPersonalizedProgram} from '../actions/homedata-action.jsx';
+import {Expect} from '../utils/utils.jsx';
 
 class HomeVideo extends React.Component{
     constructor(props) {
@@ -27,6 +28,12 @@ class HomeVideo extends React.Component{
     componentDidMount(){
         this.props.dispatch(LoadPersonalizedDj)
         this.props.dispatch(LoadPersonalizedProgram)
+    }
+    shouldComponentUpdate(){
+        if(!this.props.homedata.homeData.personalizeddj.hasOwnProperty('result') &&  !this.props.homedata.homeData.personalizedprogram.hasOwnProperty('programs')){
+            return false
+        }
+        return true
     }
     render() {
         const personalizeddj = this.props.homedata.homeData.hasOwnProperty('personalizeddj') ? this.props.homedata.homeData.personalizeddj : {}
@@ -91,7 +98,7 @@ class HomeVideo extends React.Component{
                                         <img className="item-img" src={picUrl} alt={name}/>
                                         <span className="item-label">
                                             <i className="iconfont icon-erji"></i>
-                                            {program.adjustedPlayCount}
+                                            {Expect(program.adjustedPlayCount)}
                                         </span>
                                         <span className="item-title">{name}</span>
                                     </li>
