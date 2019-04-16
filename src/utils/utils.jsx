@@ -51,6 +51,10 @@ export function Expect(number){
         return;
     }
     let numStr = number.toString()
+    if(numStr.length>8){
+        let decimal = numStr.substring(numStr.length-8,numStr.length-7)
+        return parseFloat(parseInt(number/100000000)+'.'+ decimal )+'亿'
+    }
     if(numStr.length>4){
         let decimal = numStr.substring(numStr.length-4,numStr.length-3)
         return parseFloat(parseInt(number/10000)+'.'+ decimal )+'万'

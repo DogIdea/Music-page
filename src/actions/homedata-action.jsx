@@ -1,34 +1,29 @@
-import {PersonalizedSongs,TopPlayList,PersonalizedDj,PersonalizedProgram} from '../service/home-service.jsx';
+import * as types from './action_type.jsx';
 
-export const LoadPersonalizedSongs = async (dispatch) =>{
-    const res = await PersonalizedSongs(6)
-    dispatch({
-        type:'PERSONALIZED_SONGS',
-        personalizedsongs:res.data
-    })
+export const LoadDataBegin = () =>{
+    return {
+        type:types.GET_DATA_BEGIN,
+    }
 }
 
-export const LoadTopPlayList = async (dispatch) =>{
-    const res = await TopPlayList(6)
-    dispatch({
-        type:'TOP_PLAYLIST',
-        topplaylist:res.data
-    })
+export const LoadDataSuccess = (data,name) =>{
+    return {
+        type:types.GET_DATA_SUCCESS,
+        data:{name,data}
+    }
+}
+export const LoadDataFailure = () =>{
+    return {
+        type:types.GET_DATA_FAILURE,
+    }
 }
 
 
-export const LoadPersonalizedDj = async (dispatch) =>{
-    const res = await PersonalizedDj()
-    dispatch({
-        type:'PERSONALIZE_Dj',
-        personalizeddj:res.data
-    })
-}
-
-export const LoadPersonalizedProgram = async (dispatch)=>{
-    const res = await PersonalizedProgram()
-    dispatch({
-        type:'PERSONALIZED_PROGRAM',
-        personalizedprogram:res.data
-    })
-}
+export function LoadData(fn,value='') {
+    return dispatch => {
+      dispatch(LoadDataBegin());
+      return fn(value)
+        .then(res => dispatch(LoadDataSuccess(res.data,fn.name)))
+        .catch(error => dispatch(LoadDataFailure(error)));
+    };
+  }

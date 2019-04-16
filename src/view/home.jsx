@@ -22,11 +22,7 @@ class Home extends React.Component{
             }
         }
     }
-    componentWillMount(){
-        console.log("父元素的componentWillMount")
-     }
     onMenuTab(index){
-        console.log(this.props.location.pathname)
         let path = this.state.menutabs[index].path;
         this.props.history.push(path);
     }

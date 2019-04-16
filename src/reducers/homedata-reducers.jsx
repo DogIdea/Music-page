@@ -1,37 +1,19 @@
+
 const initialState={
-    personalizedsongs:{},
-    topplaylist:{},
-    personalizeddj:{},
-    personalizedprogram:{}
+    PersonalizedSongs:{},
+    TopPlayList:{},
+    PersonalizedDj:{},
+    PersonalizedProgram:{}
 }
 
-
-const homeData = (state=initialState,action)=>{
-    console.log(action)
+export const homeData = (state=initialState,action) => {
     switch(action.type){
-        case 'PERSONALIZED_SONGS':
-            return {
-                ...state,
-                personalizedsongs:action.personalizedsongs
-            }
-        case 'TOP_PLAYLIST':
-            return {
-                ...state,
-                topplaylist:action.topplaylist
-            }
-        case 'PERSONALIZE_Dj':
-            return {
-                ...state,
-                personalizeddj:action.personalizeddj
-            }
-        case 'PERSONALIZED_PROGRAM':
-            return {
-                ...state,
-                personalizedprogram:action.personalizedprogram
-            }   
+        case 'GET_DATA_SUCCESS':
+            let Newaction = {};
+            Newaction[action.data.name]=action.data.data;
+            return Object.assign({}, {...state}, Newaction)
         default:
             return state
     }
 }
 
-export default homeData

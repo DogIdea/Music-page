@@ -1,8 +1,9 @@
 import React from 'react';
 import NewSwiper from './swiper';
 import { connect } from 'react-redux';
-import {LoadPersonalizedDj,LoadPersonalizedProgram} from '../actions/homedata-action.jsx';
 import {Expect} from '../utils/utils.jsx';
+import {LoadData} from '../actions/homedata-action.jsx';
+import {PersonalizedDj,PersonalizedProgram} from '../service/home-service.jsx';
 
 class HomeVideo extends React.Component{
     constructor(props) {
@@ -26,20 +27,18 @@ class HomeVideo extends React.Component{
         }
     }
     componentDidMount(){
-        this.props.dispatch(LoadPersonalizedDj)
-        this.props.dispatch(LoadPersonalizedProgram)
+        this.props.dispatch(LoadData(PersonalizedDj))
+        this.props.dispatch(LoadData(PersonalizedProgram))
     }
     shouldComponentUpdate(){
-        if(!this.props.homedata.homeData.personalizeddj.hasOwnProperty('result') &&  !this.props.homedata.homeData.personalizedprogram.hasOwnProperty('programs')){
+        if(!this.props.homevideodata.PersonalizedDj.hasOwnProperty('result') &&  !this.props.homevideodata.PersonalizedProgram.hasOwnProperty('programs')){
             return false
         }
         return true
     }
     render() {
-        const personalizeddj = this.props.homedata.homeData.hasOwnProperty('personalizeddj') ? this.props.homedata.homeData.personalizeddj : {}
-        const personalizedprogram = this.props.homedata.homeData.hasOwnProperty('personalizedprogram') ? this.props.homedata.homeData.personalizedprogram : {}
-        console.log(personalizeddj,personalizedprogram.programs)
-        console.log('子元素的render')
+        const personalizeddj = this.props.homevideodata.hasOwnProperty('PersonalizedDj') ? this.props.homevideodata.PersonalizedDj : {}
+        const personalizedprogram = this.props.homevideodata.hasOwnProperty('PersonalizedProgram') ? this.props.homevideodata.PersonalizedProgram : {}
         return (
             <div className="home-video">
                 <NewSwiper styleclassname={this.state.styleclassname} swiperimage={this.state.swiperimage}></NewSwiper>
@@ -113,7 +112,7 @@ class HomeVideo extends React.Component{
 }
 const mapStateToProps = (state) =>{
     return{
-        homedata: state
+        homevideodata: state.homeData
     }
 }
 export default connect(mapStateToProps)(HomeVideo);

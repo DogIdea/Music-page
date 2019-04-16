@@ -2,7 +2,8 @@ import React from 'react';
 import NewSwiper from './swiper';
 import { connect } from 'react-redux';
 import {Expect} from '../utils/utils.jsx';
-import {LoadPersonalizedSongs,LoadTopPlayList} from '../actions/homedata-action.jsx';
+import {LoadData} from '../actions/homedata-action.jsx';
+import {PersonalizedSongs,TopPlayList} from '../service/home-service.jsx';
 
 
 class HomeMusic extends React.Component{
@@ -28,21 +29,18 @@ class HomeMusic extends React.Component{
         }
     }
     componentWillMount(){
-        this.props.dispatch(LoadPersonalizedSongs)
-        this.props.dispatch(LoadTopPlayList)
-        console.log("子元素的componentWillMount")
+        this.props.dispatch(LoadData(PersonalizedSongs,6))
+        this.props.dispatch(LoadData(TopPlayList,6))
     }
     shouldComponentUpdate(){
-        if(!this.props.homedata.homeData.personalizedsongs.hasOwnProperty('result') &&  !this.props.homedata.homeData.topplaylist.hasOwnProperty('playlists')){
+        if(!this.props.homemusicdata.PersonalizedSongs.hasOwnProperty('result') &&  !this.props.homemusicdata.TopPlayList.hasOwnProperty('playlists')){
             return false
         }
         return true
     }
     render() {
-        const personalizedsongs = this.props.homedata.homeData.hasOwnProperty('personalizedsongs') ? this.props.homedata.homeData.personalizedsongs : {}
-        const topplaylist =  this.props.homedata.homeData.hasOwnProperty('topplaylist') ? this.props.homedata.homeData.topplaylist :{}
-        console.log(personalizedsongs,topplaylist)
-        console.log("子元素的render")
+        const personalizedsongs = this.props.homemusicdata.hasOwnProperty('PersonalizedSongs') ? this.props.homemusicdata.PersonalizedSongs : {}
+        const topplaylist =  this.props.homemusicdata.hasOwnProperty('TopPlayList') ? this.props.homemusicdata.TopPlayList :{}
         return (
             <div className="home-music">
                 <NewSwiper styleclassname={this.state.styleclassname} swiperimage={this.state.swiperimage}></NewSwiper>
@@ -111,7 +109,7 @@ class HomeMusic extends React.Component{
 }
 const mapStateToProps = (state) =>{
     return{
-        homedata: state
+        homemusicdata: state.homeData
     }
 }
 
