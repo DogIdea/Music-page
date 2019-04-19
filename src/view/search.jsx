@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/css/search.scss';
 import Header from '../components/header.jsx';
 import Footer from '../components/footer.jsx';
 class Search extends React.Component{
@@ -11,9 +12,6 @@ class Search extends React.Component{
             }
         }
     }
-    componentDidMount(){
-        console.log("music加载了")
-    }
     render() {
         return (
         <div>
@@ -21,7 +19,7 @@ class Search extends React.Component{
               <Header sign={this.state.sign}></Header>
             </div>
             <div className="search-body">
-              
+                {this.props.children}
             </div>
             <Footer></Footer>
         </div>

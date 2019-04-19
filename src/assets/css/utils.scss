@@ -1,6 +1,7 @@
 $bgColor: #6A5ACD;
 $bdColor:#e6e6fa;
 $iconColor:#CDC5BF;
+$labColor:#EDEDED;
 @mixin border-min-px($color) { 
     position:relative;
     &:after{

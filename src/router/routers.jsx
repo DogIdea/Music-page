@@ -6,6 +6,8 @@ const Mine = GetAsyncComponent(()=>import('../view/mine.jsx'));
 const SongSheet = GetAsyncComponent(()=>import('../view/songsheet.jsx'));
 const HomeMusic = GetAsyncComponent(()=>import('../components/homemusic.jsx'));
 const HomeVideo = GetAsyncComponent(()=>import('../components/homevideo.jsx'));
+const SearchDefault = GetAsyncComponent(()=>import('../components/searchdefault.jsx'));
+const SearchResult = GetAsyncComponent(()=>import('../components/searchresult.jsx'));
 
 const RoutersConfig = [
     {
@@ -32,7 +34,23 @@ const RoutersConfig = [
     {
         path:'/search',
         component:Search,
-        exact: true
+        routes:[
+            {
+                path:'/searchdefault',
+                component:SearchDefault,
+                exact: true,
+            },
+            {
+                path:'/searchresult',
+                component:SearchResult,
+                exact: true,
+            },
+            {
+                path:'/',
+                component:SearchDefault,
+                exact: true,
+            },
+        ]
     },
     {
         path:'/mine',
