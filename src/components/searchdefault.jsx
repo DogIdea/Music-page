@@ -4,10 +4,10 @@ class SearchDefault extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            IsSearch:true
         }
     }
     componentDidMount(){
+        console.log(this.props)
         console.log("music加载了")
     }
     render() {
@@ -62,7 +62,7 @@ class SearchDefault extends React.Component{
         return (
            <div>
                {
-                   this.state.IsSearch ? SearchDefault : SearchIng
+                   this.props.IsSearch ? SearchDefault : SearchIng
                }
            </div>
         )

@@ -40,7 +40,7 @@ export function GetAsyncComponent(importComponent){
         render() {
            // 解构赋值
             const { Component } = this.state || {}
-            return Component ? <Component {...this.props} /> : null
+            return Component ? <Component {...this.props}/> : null
         }
     }
 }
