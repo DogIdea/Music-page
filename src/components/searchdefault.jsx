@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class SearchDefault extends React.Component{
     constructor(props) {
@@ -7,8 +8,10 @@ class SearchDefault extends React.Component{
         }
     }
     componentDidMount(){
-        console.log(this.props)
-        console.log("music加载了")
+        
+    }
+    shouldComponentUpdate(){
+        
     }
     render() {
         let SearchDefault = (
@@ -62,11 +65,17 @@ class SearchDefault extends React.Component{
         return (
            <div>
                {
-                   this.props.IsSearch ? SearchDefault : SearchIng
+                   this.props.searchdefaultdata.IsSign ? SearchDefault : SearchIng
                }
            </div>
         )
     }
 }
+const mapStateToProps = (state) =>{
+    console.log(state.searchData)
+    return{
+        searchdefaultdata: state.searchData
+    }
+}
 
-export default SearchDefault;
+export default connect(mapStateToProps)(SearchDefault);

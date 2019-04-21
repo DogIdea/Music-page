@@ -27,8 +27,6 @@ class Home extends React.Component{
         this.props.history.push(path);
     }
     render() {
-        
-        console.log("父元素的render")
         return (
             <div>
                 <div className="home-header">

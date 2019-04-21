@@ -1,5 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import {IsSearch} from '../actions/searchdata-action.jsx';
+import { connect } from 'react-redux';
 import '../assets/css/header.scss';
 
 class Header extends React.Component{
@@ -8,6 +10,13 @@ class Header extends React.Component{
         this.state = {
             title:'个人音乐测试'
         }
+    }
+    onIsSearch(e){
+        if(e.target.value){
+            this.props.dispatch(IsSearch(false))
+        }else{
+            this.props.dispatch(IsSearch(true)) 
+        }   
     }
     render() {
         let HeaderMessage,HeaderIcon;
@@ -28,7 +37,7 @@ class Header extends React.Component{
         }else if(this.props.sign.name === 'search') {
             HeaderMessage = (
                 <div className="header-message">
-                    <input type="text" placeholder="请输入关键词..."/>
+                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}}/>
                 </div>
             )
             HeaderIcon = (
@@ -48,4 +57,4 @@ class Header extends React.Component{
     }
 }
 
-export default Header;
+export default connect()(Header);

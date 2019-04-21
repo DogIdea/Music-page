@@ -20,14 +20,7 @@ class Search extends React.Component{
               <Header sign={this.state.sign}></Header>
             </div>
             <div className="search-body">
-                {
-                    React.Children.map(this.props.children, Child => {
-                        console.log(this.props,'1')
-                        console.log(this.props.children,'2')
-                        console.log(React.cloneElement(Child,{IsSearch:this.state.IsSearch}),'3')
-                        return React.cloneElement(Child,{IsSearch:this.state.IsSearch})
-                    })
-                }
+                {this.props.children}
             </div>
             <Footer></Footer>
         </div>
