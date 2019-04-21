@@ -1,4 +1,6 @@
 import React from 'react';
+import { LoadData } from '../actions/searchdata-action.jsx';
+import { GetSearchHot } from '../service/search-service.jsx';
 import { connect } from 'react-redux';
 
 class SearchDefault extends React.Component{
@@ -8,12 +10,11 @@ class SearchDefault extends React.Component{
         }
     }
     componentDidMount(){
-        
-    }
-    shouldComponentUpdate(){
-        
+        this.props.dispatch(LoadData(GetSearchHot))
     }
     render() {
+        let getsearchhot = this.props.searchdefaultdata.GetSearchHot.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchHot.result : {} 
+        console.log(getsearchhot)
         let SearchDefault = (
                 <div className="search-default">
                     <div className="search-hot">
@@ -21,14 +22,13 @@ class SearchDefault extends React.Component{
                             <h1>热门搜索</h1>
                         </div>
                         <ul className="label-list">
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
+                            {
+                                getsearchhot.hasOwnProperty('hots') ? getsearchhot.hots.map(function({first}){
+                                    return (
+                                        <li className="label-word" key={first}>{first}</li>
+                                    )
+                                }) : []
+                            }
                         </ul>
                     </div>
                     <div className="search-history">

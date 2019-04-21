@@ -1,9 +1,9 @@
 import React from 'react';
 import NewSwiper from './swiper';
 import { connect } from 'react-redux';
-import {Expect} from '../utils/utils.jsx';
-import {LoadData} from '../actions/homedata-action.jsx';
-import {PersonalizedSongs,TopPlayList} from '../service/home-service.jsx';
+import { Expect } from '../utils/utils.jsx';
+import { LoadData } from '../actions/homedata-action.jsx';
+import { PersonalizedSongs,TopPlayList } from '../service/home-service.jsx';
 
 
 class HomeMusic extends React.Component{
