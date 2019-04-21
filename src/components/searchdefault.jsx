@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadData } from '../actions/searchdata-action.jsx';
+import { LoadData,IsSearch} from '../actions/searchdata-action.jsx';
 import { GetSearchHot } from '../service/search-service.jsx';
 import { connect } from 'react-redux';
 
@@ -10,6 +10,7 @@ class SearchDefault extends React.Component{
         }
     }
     componentDidMount(){
+        this.props.dispatch(IsSearch(true))
         this.props.dispatch(LoadData(GetSearchHot))
     }
     render() {
@@ -53,7 +54,7 @@ class SearchDefault extends React.Component{
                 <div className="search-ing">
                     <ul className="search-list">
                         <li className="search-keyword first-keyword">
-                            搜索 “gg”
+                            搜索 “{this.props.searchdefaultdata.IsSearch.Value}”
                         </li>
                         <li className="search-keyword">歌曲名A</li>
                         <li className="search-keyword">歌曲名B</li>
@@ -65,14 +66,13 @@ class SearchDefault extends React.Component{
         return (
            <div>
                {
-                   this.props.searchdefaultdata.IsSign ? SearchDefault : SearchIng
+                   this.props.searchdefaultdata.IsSearch.IsSign ? SearchDefault : SearchIng
                }
            </div>
         )
     }
 }
 const mapStateToProps = (state) =>{
-    console.log(state.searchData)
     return{
         searchdefaultdata: state.searchData
     }

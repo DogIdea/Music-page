@@ -1,6 +1,6 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import {IsSearch} from '../actions/searchdata-action.jsx';
+import { NavLink } from 'react-router-dom';
+import { IsSearch } from '../actions/searchdata-action.jsx';
 import { connect } from 'react-redux';
 import '../assets/css/header.scss';
 
@@ -13,10 +13,16 @@ class Header extends React.Component{
     }
     onIsSearch(e){
         if(e.target.value){
-            this.props.dispatch(IsSearch(false))
+            this.props.dispatch(IsSearch(false,e.target.value))
         }else{
             this.props.dispatch(IsSearch(true)) 
         }   
+    }
+    onKeydown(e){
+        if(e.keyCode===13){
+            // let submitsearch = e.target.value
+            // this.props.dispatch(SubmitSearch(submitsearch))
+        }
     }
     render() {
         let HeaderMessage,HeaderIcon;
@@ -37,7 +43,7 @@ class Header extends React.Component{
         }else if(this.props.sign.name === 'search') {
             HeaderMessage = (
                 <div className="header-message">
-                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}}/>
+                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)}/>
                 </div>
             )
             HeaderIcon = (

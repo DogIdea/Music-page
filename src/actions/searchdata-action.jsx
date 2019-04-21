@@ -27,12 +27,16 @@ export const LoadDataFailure = () =>{
     }
 }
 
-export const IsSearch = (issign) => {
+export const IsSearch = (issign,value) => {
     return {
         type:types.GET_IS_SEARCH,
-        IsSign:issign
+        IsSearch:{
+            IsSign:issign,
+            Value:value
+        }
     }
 }
+
 
 export function LoadData(fn,value='') {
     return dispatch => {
