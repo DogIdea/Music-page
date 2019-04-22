@@ -23,6 +23,7 @@ export function GetSearchHot() {
 
 //用于搜索建议keywords为关键字albums唱片 artists歌手 songs单曲 playlists歌单
 export function GetSearchSuggest(keywords) {
+    console.log(keywords)
     return Fetch({
         url:'/search/suggest',
         method:'post',

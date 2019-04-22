@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { IsSearch } from '../actions/searchdata-action.jsx';
+import { IsSearch,LoadData } from '../actions/searchdata-action.jsx';
 import { connect } from 'react-redux';
+import {GetSearchSuggest} from '../service/search-service';
 import '../assets/css/header.scss';
 
 class Header extends React.Component{
@@ -13,7 +14,9 @@ class Header extends React.Component{
     }
     onIsSearch(e){
         if(e.target.value){
-            this.props.dispatch(IsSearch(false,e.target.value))
+            this.props.dispatch(IsSearch(false,e.target.value));
+            console.log(e.target.value)
+            this.props.dispatch(LoadData(GetSearchSuggest,e.target.value));
         }else{
             this.props.dispatch(IsSearch(true)) 
         }   

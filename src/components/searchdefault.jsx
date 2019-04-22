@@ -14,8 +14,8 @@ class SearchDefault extends React.Component{
         this.props.dispatch(LoadData(GetSearchHot))
     }
     render() {
-        let getsearchhot = this.props.searchdefaultdata.GetSearchHot.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchHot.result : {} 
-        console.log(getsearchhot)
+        let getsearchhot = this.props.searchdefaultdata.GetSearchHot.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchHot.result : {}
+        let getsearchsuggest = this.props.searchdefaultdata.GetSearchSuggest.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchSuggest.result : {}
         let SearchDefault = (
                 <div className="search-default">
                     <div className="search-hot">
@@ -56,10 +56,14 @@ class SearchDefault extends React.Component{
                         <li className="search-keyword first-keyword">
                             搜索 “{this.props.searchdefaultdata.IsSearch.Value}”
                         </li>
-                        <li className="search-keyword">歌曲名A</li>
-                        <li className="search-keyword">歌曲名B</li>
-                        <li className="search-keyword">歌曲名C</li>
-                        <li className="search-keyword">歌曲名D</li>
+                        {
+                            getsearchsuggest.hasOwnProperty('songs') ? getsearchsuggest.songs.map(function({name,id}){
+                                    return(
+                                        <li className="search-keyword" key={id}>{name}</li>
+                                    )
+
+                            }) :[]
+                        }
                     </ul>
                </div>
             )
