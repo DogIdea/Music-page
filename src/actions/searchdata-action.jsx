@@ -7,6 +7,7 @@ export const LoadDataBegin = () =>{
 }
 
 export const LoadDataSuccess = (data,name) =>{
+    console.log(data,'LoadDataSuccess')
     return {
         type:types.GET_DATA_SUCCESS,
         data:{name,data}
@@ -42,7 +43,9 @@ export function LoadData(fn,value='') {
     return dispatch => {
       dispatch(LoadDataBegin());
       return fn(value)
-        .then(res => dispatch(LoadDataSuccess(res.data,fn.name)))
+        .then(res => {
+            dispatch(LoadDataSuccess(res.data,fn.name))
+        })
         .catch(error => dispatch(LoadDataFailure(error)));
     };
   }

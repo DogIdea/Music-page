@@ -14,8 +14,8 @@ class SearchDefault extends React.Component{
         this.props.dispatch(LoadData(GetSearchHot))
     }
     render() {
-        let getsearchhot = this.props.searchdefaultdata.GetSearchHot.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchHot.result : {}
-        let getsearchsuggest = this.props.searchdefaultdata.GetSearchSuggest.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchSuggest.result : {}
+        let getsearchhot = this.props.searchdefaultdata.GetSearchHot.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchHot.result : {};
+        let getsearchsuggest = this.props.searchdefaultdata.GetSearchSuggest.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchSuggest.result : {};
         let SearchDefault = (
                 <div className="search-default">
                     <div className="search-hot">
@@ -57,7 +57,23 @@ class SearchDefault extends React.Component{
                             搜索 “{this.props.searchdefaultdata.IsSearch.Value}”
                         </li>
                         {
+                            getsearchsuggest.hasOwnProperty('artists') ? getsearchsuggest.artists.map(function({name,id}){
+                                    return(
+                                        <li className="search-keyword" key={id}>{name}</li>
+                                    )
+
+                            }) :[]
+                        }
+                        {
                             getsearchsuggest.hasOwnProperty('songs') ? getsearchsuggest.songs.map(function({name,id}){
+                                    return(
+                                        <li className="search-keyword" key={id}>{name}</li>
+                                    )
+
+                            }) :[]
+                        }
+                        {
+                            getsearchsuggest.hasOwnProperty('albums') ? getsearchsuggest.albums.map(function({name,id}){
                                     return(
                                         <li className="search-keyword" key={id}>{name}</li>
                                     )

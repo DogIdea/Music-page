@@ -70,11 +70,40 @@ export function Fetch(options) {
             responseType: "json",
             headers: { 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
         });
+        console.log(options,'options')
         instance(options).then((res)=>{
+            console.log(res,'options')
             resolve(res)
         }).catch((err) => {
             console.log(err)
             reject(err)
         })
     })
+}
+
+// 防抖
+export function Debounce(func, delay) {
+	let timer = null;
+	return function() {
+		let _this = this,
+		    _arg = arguments;
+		clearTimeout(timer);
+		timer = setTimeout(function() {
+			func.apply(_this, _arg);
+        }, delay);
+	}
+}
+
+// 节流
+export function Throttle(func, delay=300000) {
+    let prev = Date.now();
+    return function() {
+        let context = this;
+        let args = arguments;
+        let now = Date.now();
+        if (now - prev >= delay) {
+            func.apply(context, args);
+            prev = Date.now();
+        }
+    }
 }
