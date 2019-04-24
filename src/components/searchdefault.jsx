@@ -57,27 +57,14 @@ class SearchDefault extends React.Component{
                             搜索 “{this.props.searchdefaultdata.IsSearch.Value}”
                         </li>
                         {
-                            getsearchsuggest.hasOwnProperty('artists') ? getsearchsuggest.artists.map(function({name,id}){
-                                    return(
-                                        <li className="search-keyword" key={id}>{name}</li>
-                                    )
-
-                            }) :[]
-                        }
-                        {
-                            getsearchsuggest.hasOwnProperty('songs') ? getsearchsuggest.songs.map(function({name,id}){
-                                    return(
-                                        <li className="search-keyword" key={id}>{name}</li>
-                                    )
-
-                            }) :[]
-                        }
-                        {
-                            getsearchsuggest.hasOwnProperty('albums') ? getsearchsuggest.albums.map(function({name,id}){
-                                    return(
-                                        <li className="search-keyword" key={id}>{name}</li>
-                                    )
-
+                            getsearchsuggest.hasOwnProperty('order') ? getsearchsuggest.order.map(function(order){
+                                return (
+                                    getsearchsuggest.hasOwnProperty(order) ? getsearchsuggest[order].map(function({name,id}){
+                                        return (
+                                            <li className="search-keyword" key={id}>{name}</li>
+                                        )
+                                    }):[]
+                                )
                             }) :[]
                         }
                     </ul>

@@ -1,15 +1,14 @@
 import {Fetch} from "../utils/utils.jsx";
-import qs from 'qs';
 
 //用于搜索keywords为关键字
 export function GetSearchList(keywords,limit) {
     return Fetch({
         url:'/search',
-        method:'post',
-        data:qs.stringify({
+        method:'get',
+        params:{
             keywords:keywords,
             limit:limit
-        })
+        }
     })
 };
 
@@ -17,7 +16,7 @@ export function GetSearchList(keywords,limit) {
 export function GetSearchHot() {
     return Fetch({
         url:'/search/hot',
-        method:'post'
+        method:'get'
     })
 };
 
@@ -28,8 +27,5 @@ export function GetSearchSuggest(keywords) {
         url:'/search/suggest',
         method:'get',
         params:{keywords:keywords}
-        // data:qs.stringify({
-        //     keywords:keywords
-        // })
     })
 };

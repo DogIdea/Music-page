@@ -70,12 +70,9 @@ export function Fetch(options) {
             responseType: "json",
             headers: { 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
         });
-        console.log(options,'options')
         instance(options).then((res)=>{
-            console.log(res,'options')
             resolve(res)
         }).catch((err) => {
-            console.log(err)
             reject(err)
         })
     })
