@@ -15,7 +15,6 @@ export const searchData = (state=initialState,action) => {
             return Object.assign({}, {...state}, {...action}) 
         case 'GET_DATA_SUCCESS':
             Newaction[action.data.name]=action.data.data;
-            console.log(action.data.data,'searchData')
             return Object.assign({}, state, Newaction)
         case 'GET_SESSION_SUCCESS':
             Newaction[action.data.name]=action.data.data;

@@ -44,9 +44,10 @@ class Header extends React.Component{
                 </div>
             )
         }else if(this.props.sign.name === 'search') {
+            let inputvalue = this.props.searchdefaultdata.IsSearch.Value
             HeaderMessage = (
                 <div className="header-message">
-                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)}/>
+                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)} value={inputvalue ? inputvalue : ""}/>
                 </div>
             )
             HeaderIcon = (
@@ -65,5 +66,9 @@ class Header extends React.Component{
         )
     }
 }
-
-export default connect()(Header);
+const mapStateToProps = (state) =>{
+    return{
+        searchdefaultdata: state.searchData
+    }
+}
+export default connect(mapStateToProps)(Header);

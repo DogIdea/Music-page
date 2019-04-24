@@ -7,7 +7,6 @@ export const LoadDataBegin = () =>{
 }
 
 export const LoadDataSuccess = (data,name) =>{
-    console.log(data,'LoadDataSuccess')
     return {
         type:types.GET_DATA_SUCCESS,
         data:{name,data}
