@@ -22,8 +22,9 @@ class SearchDefault extends React.Component{
             case 'label-word':
                 this.props.dispatch(IsSearch(true,e.target.innerHTML));
                 return;
-            case 'iconfont':
+            case 'iconfont icon-qingkongshanchu':
                 localStorage.removeItem('SearchMusicHistory');
+                this.props.dispatch(LoadSession());
                 return;
             default:
                 return;
@@ -95,7 +96,6 @@ class SearchDefault extends React.Component{
     }
 }
 const mapStateToProps = (state) =>{
-    console.log(state.searchData.SessionData)
     return{
         searchdefaultdata: state.searchData
     }

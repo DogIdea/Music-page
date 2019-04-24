@@ -53,9 +53,11 @@ export function LoadSession(data=''){
     let newsearcharr=[];
     let newstr = '';
     return dispatch =>{
-        if(localStorage.getItem('SearchMusicHistory') == null) {
+        if(localStorage.getItem('SearchMusicHistory') === null) {
             localStorage.setItem("SearchMusicHistory",data);
             newsearcharr.push(localStorage.getItem('SearchMusicHistory'))
+        }else if(localStorage.getItem('SearchMusicHistory') === ''){
+            newsearcharr.push('')
         }else{
             newstr = localStorage.getItem('SearchMusicHistory') + ',' + data;
             localStorage.setItem("SearchMusicHistory",newstr);
