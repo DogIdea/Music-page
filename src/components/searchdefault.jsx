@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadData,IsSearch} from '../actions/searchdata-action.jsx';
+import { LoadData,IsSearch,LoadSession} from '../actions/searchdata-action.jsx';
 import { GetSearchHot } from '../service/search-service.jsx';
 import { connect } from 'react-redux';
 
@@ -10,8 +10,9 @@ class SearchDefault extends React.Component{
         }
     }
     componentDidMount(){
-        this.props.dispatch(IsSearch(true))
-        this.props.dispatch(LoadData(GetSearchHot))
+        this.props.dispatch(IsSearch(true));
+        this.props.dispatch(LoadData(GetSearchHot));
+        this.props.dispatch(LoadSession());
     }
     onSearchClick(e){
         switch(e.target.className){
@@ -22,6 +23,7 @@ class SearchDefault extends React.Component{
                 this.props.dispatch(IsSearch(true,e.target.innerHTML));
                 return;
             case 'iconfont':
+                localStorage.removeItem('SearchMusicHistory');
                 return;
             default:
                 return;
@@ -38,7 +40,7 @@ class SearchDefault extends React.Component{
                         </div>
                         <ul className="label-list">
                             {
-                                getsearchhot.hasOwnProperty('hots') ? getsearchhot.hots.map(function({first}){
+                                getsearchhot.hasOwnProperty("hots") ? getsearchhot.hots.map(function({first}){
                                     return (
                                         <li className="label-word" key={first}>{first}</li>
                                     )
@@ -52,14 +54,13 @@ class SearchDefault extends React.Component{
                             <i className="iconfont icon-qingkongshanchu"></i>
                         </div>
                         <ul className="label-list">
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
-                            <li className="label-word">心如止水</li>
+                            {
+                               this.props.searchdefaultdata.SessionData.length > 0 ?  this.props.searchdefaultdata.SessionData.map(function(value){
+                                   return (
+                                    <li className="label-word" key={value}>{value}</li>
+                                   )
+                               }) : []
+                            }
                         </ul>
                     </div>
                 </div>
@@ -71,7 +72,7 @@ class SearchDefault extends React.Component{
                             搜索 “{this.props.searchdefaultdata.IsSearch.Value}”
                         </li>
                         {
-                            getsearchsuggest.hasOwnProperty('order') ? getsearchsuggest.order.map(function(order){
+                            getsearchsuggest.hasOwnProperty("order") ? getsearchsuggest.order.map(function(order){
                                 return (
                                     getsearchsuggest.hasOwnProperty(order) ? getsearchsuggest[order].map(function({name,id}){
                                         return (
@@ -94,6 +95,7 @@ class SearchDefault extends React.Component{
     }
 }
 const mapStateToProps = (state) =>{
+    console.log(state.searchData.SessionData)
     return{
         searchdefaultdata: state.searchData
     }

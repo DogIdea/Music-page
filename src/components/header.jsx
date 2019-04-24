@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { IsSearch,LoadData } from '../actions/searchdata-action.jsx';
+import { IsSearch,LoadData,LoadSession } from '../actions/searchdata-action.jsx';
 import { connect } from 'react-redux';
 import {GetSearchSuggest} from '../service/search-service';
 import {Throttle} from "../utils/utils.jsx";
@@ -16,7 +16,9 @@ class Header extends React.Component{
     onIsSearch(e){
         if(e.target.value){
             this.props.dispatch(IsSearch(false,e.target.value));
-            Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)))
+            if(!(e.target.value === ' ')){
+                Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)))
+            }
         }else{
             this.props.dispatch(IsSearch(true)) 
         }   
@@ -24,7 +26,14 @@ class Header extends React.Component{
     onKeydown(e){
         if(e.keyCode===13){
             // let submitsearch = e.target.value
-            // this.props.dispatch(SubmitSearch(submitsearch))
+            this.props.dispatch(LoadSession(e.target.value));
+            this.props.dispatch(IsSearch(true));
+        }
+    }
+    onSearchFocus(e){
+        if(e.target.nodeName === 'INPUT' && e.target.value && !(e.target.value===' ')){
+            this.props.dispatch(IsSearch(false,e.target.value));
+            Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)))
         }
     }
     render() {
@@ -46,8 +55,8 @@ class Header extends React.Component{
         }else if(this.props.sign.name === 'search') {
             let inputvalue = this.props.searchdefaultdata.IsSearch.Value
             HeaderMessage = (
-                <div className="header-message">
-                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)} value={inputvalue ? inputvalue : ""}/>
+                <div className="header-message" >
+                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)} value={inputvalue ? inputvalue : ""} onFocus={(e)=> this.onSearchFocus(e)}/>
                 </div>
             )
             HeaderIcon = (
@@ -57,7 +66,7 @@ class Header extends React.Component{
             )
         }
         return (
-            <header  className="music-header">
+            <header  className="music-header" >
                {HeaderMessage}
                <NavLink to={this.props.sign.path}>
                   {HeaderIcon}

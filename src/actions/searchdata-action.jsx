@@ -16,7 +16,7 @@ export const LoadDataSuccess = (data,name) =>{
 export const LoadSessionSuccess = (data) =>{
     return {
         type:types.GET_SESSION_SUCCESS,
-        data
+        SessionData:data
     }
 
 }
@@ -47,4 +47,42 @@ export function LoadData(fn,value='') {
         })
         .catch(error => dispatch(LoadDataFailure(error)));
     };
+  }
+
+export function LoadSession(data=''){
+    let newsearcharr=[];
+    let newstr = '';
+    return dispatch =>{
+        if(localStorage.getItem('SearchMusicHistory') == null) {
+            localStorage.setItem("SearchMusicHistory",data);
+            newsearcharr.push(localStorage.getItem('SearchMusicHistory'))
+        }else{
+            newstr = localStorage.getItem('SearchMusicHistory') + ',' + data;
+            localStorage.setItem("SearchMusicHistory",newstr);
+            newsearcharr = localStorage.getItem('SearchMusicHistory').split(",");
+        }
+        newsearcharr=removeEmptyArrayEle(newsearcharr);
+        newsearcharr=unique(newsearcharr);
+        dispatch(LoadSessionSuccess(newsearcharr));
+    }
+}
+
+function removeEmptyArrayEle(arr) {
+    for(var i = 0; i < arr.length; i++) {
+        if(arr[i] === undefined || arr[i] == null || arr[i] === '') {
+            arr.splice(i,1);
+            i = i - 1;
+        }
+    }
+    return arr;
+}
+
+function unique(arr){
+    var hash=[];
+    for (var i = 0; i < arr.length; i++) {
+       if(hash.indexOf(arr[i])===-1){
+        hash.push(arr[i]);
+       }
+    }
+    return hash;
   }
