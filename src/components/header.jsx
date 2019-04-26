@@ -14,20 +14,20 @@ class Header extends React.Component{
         }
     }
     onIsSearch(e){
-        if(e.target.value){
+        if(e.target.value && !(e.target.value.replace(/\s*/g,'') === '')){
             this.props.dispatch(IsSearch(false,e.target.value));
-            if(!(e.target.value === ' ')){
-                Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)))
-            }
+            Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)))
         }else{
-            this.props.dispatch(IsSearch(true)) 
+            this.props.dispatch(IsSearch(true,e.target.value)) 
         }   
     }
     onKeydown(e){
         if(e.keyCode===13){
             // let submitsearch = e.target.value
-            this.props.dispatch(LoadSession(e.target.value));
-            this.props.dispatch(IsSearch(true));
+            if(!(e.target.value.replace(/\s*/g,'') === '')){
+                this.props.dispatch(LoadSession(e.target.value));
+                this.props.dispatch(IsSearch(true));
+            }   
         }
     }
     onSearchFocus(e){
