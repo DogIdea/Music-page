@@ -23,7 +23,6 @@ class Header extends React.Component{
     }
     onKeydown(e){
         if(e.keyCode===13){
-            // let submitsearch = e.target.value
             if(!(e.target.value.replace(/\s*/g,'') === '')){
                 this.props.dispatch(LoadSession(e.target.value));
                 this.props.dispatch(IsSearch(true));
