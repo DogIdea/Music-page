@@ -26,13 +26,15 @@ class Header extends React.Component{
             if(!(e.target.value.replace(/\s*/g,'') === '')){
                 this.props.dispatch(LoadSession(e.target.value));
                 this.props.dispatch(IsSearch(true));
+                this.props.onSearch('/search/searchresult')
             }   
         }
     }
     onSearchFocus(e){
         if(e.target.nodeName === 'INPUT' && e.target.value && !(e.target.value===' ')){
             this.props.dispatch(IsSearch(false,e.target.value));
-            Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)))
+            Throttle(this.props.dispatch(LoadData(GetSearchSuggest,e.target.value)));
+            
         }
     }
     render() {

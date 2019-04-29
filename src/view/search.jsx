@@ -13,11 +13,14 @@ class Search extends React.Component{
             IsSearch:true
         }
     }
+    onSearch(path){
+        this.props.history.push(path);
+    }
     render() {
         return (
         <div>
             <div className="search-header">
-              <Header sign={this.state.sign}></Header>
+              <Header sign={this.state.sign} onSearch={(path) => {this.onSearch(path)}}></Header>
             </div>
             <div className="search-body">
                 {this.props.children}
