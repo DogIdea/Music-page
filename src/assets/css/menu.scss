@@ -16,6 +16,7 @@
         overflow:auto;
         li{
             flex:0 1 auto;
+            width:100%;
             line-height:1rem;
             text-align: center;
             color:#fff;
@@ -24,35 +25,17 @@
     }
     .menu-slider{
         position: absolute;
-        bottom:0.05rem;
-        transform:translateX(-50%);
-        width:12.5%;
-        height: 0.08rem;
-        background:#fff;
-        border-radius: 0.2rem;
-    }
-    .menu-slider-first{
-        left:25%;
-    }
-    .menu-slider-last{
-        left:75%;
-    }
-    .menu-animation-first{
-        left:25%;
-        animation: menutapfirst 0.5s ease-in 1 alternate forwards;
-    }
-    .menu-animation-last{ 
-        left:75%;
-        animation: menutaplast 0.5s ease-in 1 alternate forwards;
-    }
-    @keyframes menutapfirst{
-        100%{
-            left:75%;
-        }
-    }
-    @keyframes menutaplast{
-        100%{
-            left:25%;
+        bottom: 0;
+        left: 0;
+        height:0.1rem;
+        transition: all 0.2s;
+        &:before{
+            content: '';
+            display:block;
+            border-radius: 0.08rem;
+            width:25%;
+            border: 0.06rem solid #fff;
+            margin: 0 auto
         }
     }
 }

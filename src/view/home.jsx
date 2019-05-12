@@ -22,9 +22,23 @@ class Home extends React.Component{
             }
         }
     }
+    componentWillMount(){
+        let menuhistory = this.props.history.location.pathname;
+        let menutabs = this.state.menutabs;
+        for (let i in menutabs) {
+            if(menutabs[i].path === menuhistory){
+                this.setState({
+                    index:i
+                })
+            }
+        }
+    }
     onMenuTab(index){
         let path = this.state.menutabs[index].path;
         this.props.history.push(path);
+        this.setState({
+            index:index
+        })
     }
     render() {
         return (
