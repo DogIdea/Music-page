@@ -18,4 +18,20 @@ $labColor:#EDEDED;
     }      
 }
 
+@mixin border-break-px($color,$left) { 
+    position:relative;
+    &:after{
+        content: "  ";
+        position: absolute;
+        overflow: hidden;
+        left: $left;
+        right: $left;
+        bottom: 0;
+        height: 0.02rem;
+        background-color:$color;
+        /* 如果不用 background-color, 使用 border-top:1px solid #f00; 效果是一样的*/
+        -webkit-transform: scaleY(.5);
+        transform:scaleY(.5);
+    }      
+}
 

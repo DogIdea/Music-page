@@ -6,10 +6,10 @@ class SearchResult extends React.Component{
         super(props)
         this.state = {
             menutabs: [
-                { text: '单曲'},
-                { text: '歌手'},
-                { text: '专辑'},
-                { text: '歌单'}
+                { path: '/search/searchresult/songs',text: '单曲'},
+                { path: '/search/searchresult/artist',text: '歌手'},
+                { path: '/search/searchresult/albums',text: '专辑'},
+                { path: '/search/searchresult/playlists',text: '歌单'}
             ]
         }
     }
@@ -35,6 +35,9 @@ class SearchResult extends React.Component{
         return (
            <div>
                <MenuTab menutabs={this.state.menutabs}  {...this.props} index={this.state.index} onMenuTab={(index) => {this.onMenuTab(index)}}></MenuTab>
+               <div>
+                    {this.props.children}
+                </div>
            </div>
         )
     }

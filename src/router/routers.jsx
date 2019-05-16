@@ -8,6 +8,10 @@ const HomeMusic = GetAsyncComponent(()=>import('../components/homemusic.jsx'));
 const HomeVideo = GetAsyncComponent(()=>import('../components/homevideo.jsx'));
 const SearchDefault = GetAsyncComponent(()=>import('../components/searchdefault.jsx'));
 const SearchResult = GetAsyncComponent(()=>import('../components/searchresult.jsx'));
+const Songs = GetAsyncComponent(()=>import('../components/searchsongs.jsx'));
+const Artist = GetAsyncComponent(()=>import('../components/searchartist.jsx'));
+const Albums = GetAsyncComponent(()=>import('../components/searchalbums.jsx'));
+const Playlists = GetAsyncComponent(()=>import('../components/searchplaylists.jsx'));
 
 const RoutersConfig = [
     {
@@ -43,7 +47,28 @@ const RoutersConfig = [
             {
                 path:'/searchresult',
                 component:SearchResult,
-                exact: true,
+                routes:[
+                    {
+                        path:'/songs',
+                        component:Songs,
+                        exact: true,
+                    },
+                    {
+                        path:'/artist',
+                        component:Artist,
+                        exact: true,
+                    },
+                    {
+                        path:'/albums',
+                        component:Albums,
+                        exact: true,
+                    },
+                    {
+                        path:'/playlists',
+                        component:Playlists,
+                        exact: true,
+                    }
+                ]
             },
             {
                 path:'/',
