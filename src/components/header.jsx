@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { IsSearch,LoadData,LoadSession } from '../actions/searchdata-action.jsx';
 import { connect } from 'react-redux';
-import {GetSearchSuggest} from '../service/search-service';
+import {GetSearchSuggest,GetSearchList} from '../service/search-service';
 import {Throttle} from "../utils/utils.jsx";
 import '../assets/css/header.scss';
 
@@ -23,10 +23,12 @@ class Header extends React.Component{
     }
     onKeydown(e){
         if(e.keyCode===13){
+            let keyword = e.target.value
             if(!(e.target.value.replace(/\s*/g,'') === '')){
-                this.props.dispatch(LoadSession(e.target.value));
+                this.props.dispatch(LoadSession(keyword));
                 this.props.dispatch(IsSearch(true));
-                this.props.onSearch('/search/searchresult')
+                this.props.dispatch(LoadData(GetSearchList,keyword));
+                this.props.onSearch('/search/searchresult/songs');
             }   
         }
     }

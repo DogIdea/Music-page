@@ -1,14 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class SearchSong extends React.Component{
     constructor(props) {
         super(props)
         this.state = {}
     }
-    componentWillMount(){
-        console.log('searchsongs')
-    }
     render() {
+        let getsearchlist = this.props.searchsongsdata.GetSearchList.hasOwnProperty('result') ? this.props.searchsongsdata.GetSearchList.result : {};
         return (
             <div className="songsbody">
                 <div className="play-lists-all">
@@ -16,17 +15,36 @@ class SearchSong extends React.Component{
                     <span>播放全部</span>
                 </div>
                 <ul className="songs-lists">
-                    <li>
-                        <div>
-                            <h5>布拉格广场</h5>
-                            <span>蔡依林/周杰伦 - 看我72变</span>
-                        </div>
-                        <i className="iconfont icon-shipinbofang"></i>
-                    </li>
+                    {
+                       getsearchlist.hasOwnProperty('songs') ?  getsearchlist.songs.map(function({id,name,artists,album}){
+                        return (
+                            <li key={id}>
+                                <div>
+                                    <h5>{name}</h5>
+                                    {
+                                        artists.length > 0 ? artists.map(function({name}){
+                                            return(
+                                                <span key={name}>{name}</span>
+                                            )
+                                        }) : []
+                                    
+                                    }
+                                    <span>{album.name}</span>
+                                </div>
+                                <i className="iconfont icon-shipinbofang"></i>
+                            </li>
+                        )
+                       }) : []
+                    }
+                   
                 </ul>
             </div>
         )
     }
 }
-
-export default SearchSong;
+const mapStateToProps = (state) =>{
+    return{
+        searchsongsdata: state.searchData
+    }
+}
+export default connect(mapStateToProps)(SearchSong);

@@ -2,6 +2,7 @@ const initialState={
     GetSearchHot:{},
     SessionData:{},
     GetSearchSuggest:{},
+    GetSearchList:{},
     IsSearch:{
         IsSign:true,
         Value:''

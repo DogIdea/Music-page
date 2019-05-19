@@ -131,8 +131,14 @@
                     white-space:nowrap;
                 }
                 span{
-                    display: block;
-                    width:100%;
+                    font-size:0.3rem;
+                    color:$iconColor;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                }
+                span:last-child{
+                    width:25%;
                     font-size:0.3rem;
                     color:$iconColor;
                     overflow:hidden;
