@@ -22,9 +22,10 @@ class SearchSong extends React.Component{
                                 <div>
                                     <h5>{name}</h5>
                                     {
-                                        artists.length > 0 ? artists.map(function({name}){
-                                            return(
-                                                <span key={name}>{name}</span>
+                                        artists.length > 0 ? artists.map(function({name},index){
+                                            console.log(index)
+                                            return (
+                                                index === artists.length - 1 ? <span key={name}>{name}</span> : <span key={name}>{name}/</span>   
                                             )
                                         }) : []
                                     
