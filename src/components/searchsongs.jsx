@@ -7,6 +7,7 @@ class SearchSong extends React.Component{
         this.state = {}
     }
     render() {
+        console.log(this.props,'2')
         let getsearchlist = this.props.searchsongsdata.GetSearchList.hasOwnProperty('result') ? this.props.searchsongsdata.GetSearchList.result : {};
         return (
             <div className="songsbody">
@@ -21,6 +22,7 @@ class SearchSong extends React.Component{
                             <li key={id}>
                                 <div>
                                     <h5>{name}</h5>
+                                    <div>
                                     {
                                         artists.length > 0 ? artists.map(function({name},index){
                                             return (
@@ -29,7 +31,8 @@ class SearchSong extends React.Component{
                                         }) : []
                                     
                                     }
-                                    <span>{album.name}</span>
+                                    </div>
+                                    <span className="album">{album.name}</span>
                                 </div>
                                 <i className="iconfont icon-shipinbofang"></i>
                             </li>
@@ -47,4 +50,5 @@ const mapStateToProps = (state) =>{
         searchsongsdata: state.searchData
     }
 }
+
 export default connect(mapStateToProps)(SearchSong);

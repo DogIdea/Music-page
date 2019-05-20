@@ -119,7 +119,8 @@
             @include border-break-px($bdColor,0.3rem);
             div{
                 float: left;
-                width:70%;
+                width:80%;
+                height:100%;
                 overflow: hidden;
                 h5{
                     width:100%;
@@ -131,16 +132,18 @@
                     text-overflow:ellipsis;
                     white-space:nowrap;
                 }
-                span{
+                div{
                     float: left;
-                    font-size:0.3rem;
-                    color:$iconColor;
+                    width:35%;
                     overflow:hidden;
                     text-overflow:ellipsis;
                     white-space:nowrap;
+                    span{
+                        font-size:0.3rem;
+                        color:$iconColor;
+                    }
                 }
-                span:last-child{
-                    margin-left:0.5rem;
+                .album{
                     width:45%;
                     font-size:0.3rem;
                     color:$iconColor;
