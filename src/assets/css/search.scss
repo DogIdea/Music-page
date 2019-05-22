@@ -162,3 +162,162 @@
         }
     }
 }
+
+//searchartist
+.artistbody{
+    width:100%;
+    background:#FFF;
+    padding-top:1rem;
+    .artist-lists{
+        width:100%;
+        overflow: auto;
+        li{
+            height:1.8rem;
+            padding-left:0.3rem;
+            .artist-img{
+                float: left;
+                position: relative;
+                top:50%;
+                transform: translateY(-50%);
+                width:1.2rem;
+                height:1.2rem;
+                border-radius: 1.2rem;
+                overflow: hidden;
+                img{
+                    position: absolute;
+                    left:50%;
+                    transform: translateX(-50%);
+                    width:auto;
+                    height:1.2rem;
+                }
+            }
+            span{
+                float: left;
+                margin-left:0.2rem;
+                line-height: 1.5rem;
+                font-size:0.4rem;
+                strong{
+                    margin-left:0.2rem;
+                    color:$bdColor;
+                }
+            }
+        }
+    }
+}
+
+//searchalbums
+.albumsbody{
+    width:100%;
+    background:#FFF;
+    padding-top:1rem;
+    .albums-lists{
+        width:100%;
+        overflow: auto;
+        li{
+            height:1.8rem;
+            padding-left:0.3rem;
+            .albums-img{
+                position: relative;
+                top:50%;
+                transform: translateY(-50%);
+                float: left;
+                height:1.2rem;
+                width:2rem;
+                background-size:auto 1.2rem;
+                background-image:url(../img/background/albumsbackground.png);
+                background-repeat:no-repeat;
+                .albums-border{
+                    position: relative;
+                    float: left;
+                    width:1.2rem;
+                    height:1.2rem;
+                    border-radius: 0.1rem;
+                    overflow: hidden;
+                    img{
+                        position: absolute;
+                        left:50%;
+                        transform: translateX(-50%);
+                        width:auto;
+                        height:1.2rem;
+                    }
+                }
+            }
+            .albums-content{
+                float: left;
+                position: relative;
+                top:50%;
+                transform: translateY(-50%);
+                span{
+                    font-weight: bold;
+                    margin-top:0.1rem;
+                    font-size:0.4rem;
+                    display: block;
+                    strong{
+                        margin-left:0.2rem;
+                        color:$bdColor;
+                    }
+                }
+                span:last-child{
+                    font-weight: normal;
+                    margin-top:0.1rem;
+                    font-size:0.2rem;
+                    strong{
+                      margin-left:0;
+                      color:#7EC0EE;  
+                    }
+                }
+            }
+        }     
+    }
+}
+
+//searchplaylists
+.playlistsbody{
+    width:100%;
+    background:#FFF;
+    padding-top:1rem;
+    .playlist-lists{
+        width:100%;
+        overflow: auto;
+        li{
+            height:1.8rem;
+            padding-left:0.3rem;
+            .playlist-img{
+                float: left;
+                position: relative;
+                top:50%;
+                transform: translateY(-50%);
+                width:1.2rem;
+                height:1.2rem;
+                border-radius: 0.2rem;
+                overflow: hidden;
+                img{
+                    position: absolute;
+                    left:50%;
+                    transform: translateX(-50%);
+                    width:auto;
+                    height:1.2rem;
+                } 
+            }
+        }
+    }
+    .playlist-content{
+        float: left;
+        margin-left:0.2rem;
+        position: relative;
+        top:50%;
+        transform: translateY(-50%);
+        color:#7EC0EE;
+        span{
+            font-weight: bold;
+            font-size:0.4rem;
+            margin-top:0.2rem;
+            display: block;
+        }
+        span:last-child{
+            color:$iconColor;
+            font-weight: normal;
+            font-size:0.2rem;
+        }
+    }
+}
