@@ -38,12 +38,23 @@ export const IsSearch = (issign,value) => {
 }
 
 
+// export function LoadData(fn,value='') {
+//     return dispatch => {
+//       dispatch(LoadDataBegin());
+//       return fn(value)
+//         .then(res => {
+//             dispatch(LoadDataSuccess(res.data,fn.name))
+//         })
+//         .catch(error => dispatch(LoadDataFailure(error)));
+//     };
+//   }
 export function LoadData(fn,value='',type=0,limit=0,offset=0) {
     return dispatch => {
       dispatch(LoadDataBegin());
       if(type > 0){
         return fn(value,type,limit,offset)
         .then(res => {
+            console.log(fn.name)
             dispatch(LoadDataSuccess(res.data,fn.name))
         })
         .catch(error => dispatch(LoadDataFailure(error)));

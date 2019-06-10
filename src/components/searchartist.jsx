@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class SearchArtist extends React.Component{
     constructor(props) {
@@ -6,19 +7,32 @@ class SearchArtist extends React.Component{
         this.state = {}
     }
     render() {
+        let getsearchlist = this.props.searchsongsdata.result || {}
         return (
             <div className="artistbody">
                 <ul className="artist-lists">
-                   <li>
-                       <div className="artist-img">
-                           <img  src="https://p2.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg" alt=""/>
-                       </div>
-                       <span>周杰伦<strong>(Jay)</strong></span>
-                   </li>
+                   {
+                       getsearchlist.hasOwnProperty('artists') ?  getsearchlist.artists.map(function({id,name,picUrl,alias}){
+                           return (
+                            <li key={id}>
+                                <div className="artist-img">
+                                    <img  src={picUrl} alt=""/>
+                                </div>
+                                <span>{name}<strong>{alias.length > 0 ? (alias.join(',')) : ''}</strong></span>
+                            </li>
+                           )
+                       }) : []
+                   }
                 </ul>
             </div>
         )
     }
 }
 
-export default SearchArtist;
+const mapStateToProps = (state) =>{
+    return{
+        searchsongsdata: state.searchData.GetSearchList
+    }
+}
+
+export default connect(mapStateToProps)(SearchArtist);

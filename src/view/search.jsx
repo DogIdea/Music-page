@@ -10,11 +10,10 @@ class Search extends React.Component{
                 name:'search',
                 path:'/home'
             },
-            IsSearch:true,
+            IsSearch:true
         }
     }
     onSearch(path){
-        console.log(path)
         this.props.history.push(path);
     }
     render() {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { IsSearch } from '../actions/searchdata-action.jsx';
+import { IsSearch,LoadData } from '../actions/searchdata-action.jsx';
+import { GetSearchList } from '../service/search-service';
 import { connect } from 'react-redux';
 import MenuTab from '../components/menutab.jsx';
 
@@ -25,7 +26,6 @@ class SearchResult extends React.Component{
                 })
             }
         }
-        this.props.dispatch(IsSearch(true));
     }
     onSearchClick(e){
         switch(e.target.className){
@@ -38,10 +38,30 @@ class SearchResult extends React.Component{
     }
     onMenuTab(index){
         let path = this.state.menutabs[index].path;
+        let searchkeyword = this.props.searchdefaultdata.IsSearch.Value;
         this.props.history.push(path);
         this.setState({
             index:index
         })
+        if(searchkeyword === ''){
+            return;
+        }
+        switch(index){
+            case 0:
+                this.props.dispatch(LoadData(GetSearchList,searchkeyword,1,30,0));
+                return;
+            case 1:
+                this.props.dispatch(LoadData(GetSearchList,searchkeyword,100,30,0));
+                return;
+            case 2:
+                this.props.dispatch(LoadData(GetSearchList,searchkeyword,10,30,0));
+                return;
+            case 3:
+                this.props.dispatch(LoadData(GetSearchList,searchkeyword,1000,30,0));
+                return;
+            default:
+                return;
+        }
     }
     render() {
         let getsearchsuggest = this.props.searchdefaultdata.GetSearchSuggest.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchSuggest.result : {};
@@ -65,11 +85,18 @@ class SearchResult extends React.Component{
                 </ul>
            </div>
         )
+        let SearchContent = (
+            <div>
+                <MenuTab menutabs={this.state.menutabs}  {...this.props} index={this.state.index} onMenuTab={(index) => {this.onMenuTab(index)}}></MenuTab>
+                <div>
+                    {this.props.children} 
+                </div>
+            </div>
+        )
         return (
            <div>
-               <MenuTab menutabs={this.state.menutabs}  {...this.props} index={this.state.index} onMenuTab={(index) => {this.onMenuTab(index)}}></MenuTab>
                <div onClick={(e) => {this.onSearchClick(e)}}>
-                    {this.props.searchdefaultdata.IsSearch.IsSign ? this.props.children : SearchIng}
+                    {this.props.searchdefaultdata.IsSearch.IsSign ? SearchContent : SearchIng}
                 </div>
            </div>
         )

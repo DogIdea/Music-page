@@ -1,13 +1,15 @@
 import {Fetch} from "../utils/utils.jsx";
 
 //用于搜索keywords为关键字(用于songs加载数据)
-export function GetSearchList(keywords,limit) {
+export function GetSearchList(keywords,type,limit,offset) {
     return Fetch({
         url:'/search',
         method:'get',
         params:{
             keywords:keywords,
-            limit:limit
+            type:type,
+            limit:limit,
+            offset:offset
         }
     })
 };

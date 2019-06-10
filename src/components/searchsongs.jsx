@@ -7,6 +7,8 @@ class SearchSong extends React.Component{
         this.state = {}
     }
     render() {
+        let getsearchlist = this.props.searchsongsdata.result || {}
+        console.log(getsearchlist)
         return (
             <div className="songsbody">
                 <div className="play-lists-all">
@@ -27,7 +29,6 @@ class SearchSong extends React.Component{
                                                 index === artists.length - 1 ? <span key={name}>{name}</span> : <span key={name}>{name}/</span>   
                                             )
                                         }) : []
-                                    
                                     }
                                     </div>
                                     <span className="album">{album.name}</span>
@@ -37,7 +38,6 @@ class SearchSong extends React.Component{
                         )
                        }) : []
                     }
-                   
                 </ul>
             </div>
         )
@@ -45,7 +45,7 @@ class SearchSong extends React.Component{
 }
 const mapStateToProps = (state) =>{
     return{
-        searchsongsdata: state.searchData
+        searchsongsdata: state.searchData.GetSearchList
     }
 }
 

@@ -13,7 +13,6 @@ class MenuTab extends React.Component{
     onMenuTab(e){
         e.persist();//以异步方式访问属性，因为this.state为异步
         this.props.onMenuTab(e._targetInst.index)
-        console.log(e._targetInst.index)
     }
     render() {
         return (

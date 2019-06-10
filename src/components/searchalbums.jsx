@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class SearchAlbums extends React.Component{
     constructor(props) {
@@ -6,6 +7,8 @@ class SearchAlbums extends React.Component{
         this.state = {}
     }
     render() {
+        console.log(this.props.searchsongsdata)
+        let getsearchlist = this.props.searchsongsdata.result || {}
         return (
             <div className="albumsbody">
                 <ul className="albums-lists">
@@ -26,4 +29,10 @@ class SearchAlbums extends React.Component{
     }
 }
 
-export default SearchAlbums;
+const mapStateToProps = (state) =>{
+    return{
+        searchsongsdata: state.searchData.GetSearchList
+    }
+}
+
+export default connect(mapStateToProps)(SearchAlbums);
