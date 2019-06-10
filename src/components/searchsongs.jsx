@@ -8,7 +8,6 @@ class SearchSong extends React.Component{
     }
     render() {
         let getsearchlist = this.props.searchsongsdata.result || {}
-        console.log(getsearchlist)
         return (
             <div className="songsbody">
                 <div className="play-lists-all">
