@@ -44,7 +44,6 @@ export function LoadData(fn,value='',type=0,limit=0,offset=0) {
       if(type > 0){
         return fn(value,type,limit,offset)
         .then(res => {
-            console.log(fn.name)
             dispatch(LoadDataSuccess(res.data,fn.name))
         })
         .catch(error => dispatch(LoadDataFailure(error)));
