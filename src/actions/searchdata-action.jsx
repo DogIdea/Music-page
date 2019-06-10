@@ -38,9 +38,16 @@ export const IsSearch = (issign,value) => {
 }
 
 
-export function LoadData(fn,value='') {
+export function LoadData(fn,value='',type=0,limit=0,offset=0) {
     return dispatch => {
       dispatch(LoadDataBegin());
+      if(type > 0){
+        return fn(value,type,limit,offset)
+        .then(res => {
+            dispatch(LoadDataSuccess(res.data,fn.name))
+        })
+        .catch(error => dispatch(LoadDataFailure(error)));
+      }
       return fn(value)
         .then(res => {
             dispatch(LoadDataSuccess(res.data,fn.name))

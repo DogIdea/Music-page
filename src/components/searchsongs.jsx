@@ -7,8 +7,6 @@ class SearchSong extends React.Component{
         this.state = {}
     }
     render() {
-        console.log(this.props,'2')
-        let getsearchlist = this.props.searchsongsdata.GetSearchList.hasOwnProperty('result') ? this.props.searchsongsdata.GetSearchList.result : {};
         return (
             <div className="songsbody">
                 <div className="play-lists-all">
