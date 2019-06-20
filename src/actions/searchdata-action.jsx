@@ -44,7 +44,7 @@ export function LoadData(fn,value='',type=0,limit=0,offset=0) {
       if(type > 0){
         return fn(value,type,limit,offset)
         .then(res => {
-            dispatch(LoadDataSuccess(res.data,fn.name))
+            dispatch(LoadDataSuccess(res.data,fn.name));
         })
         .catch(error => dispatch(LoadDataFailure(error)));
       }
@@ -62,7 +62,7 @@ export function LoadSession(data=''){
     return dispatch =>{
         if(localStorage.getItem('SearchMusicHistory') === null) {
             localStorage.setItem("SearchMusicHistory",data);
-            newsearcharr.push(localStorage.getItem('SearchMusicHistory'))
+            newsearcharr.push(localStorage.getItem('SearchMusicHistory'));
         }else{
             newstr = localStorage.getItem('SearchMusicHistory') + ',' + data;
             localStorage.setItem("SearchMusicHistory",newstr);

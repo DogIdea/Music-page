@@ -1,5 +1,5 @@
 import React from 'react';
-import { IsSearch,LoadData } from '../actions/searchdata-action.jsx';
+import { LoadData } from '../actions/searchdata-action.jsx';
 import { GetSearchList } from '../service/search-service';
 import { connect } from 'react-redux';
 import MenuTab from '../components/menutab.jsx';
@@ -16,6 +16,7 @@ class SearchResult extends React.Component{
             ]
         }
     }
+
     componentWillMount(){
         let menuhistory = this.props.history.location.pathname;
         let menutabs = this.state.menutabs;
@@ -27,15 +28,7 @@ class SearchResult extends React.Component{
             }
         }
     }
-    onSearchClick(e){
-        switch(e.target.className){
-            case 'search-keyword':
-                this.props.dispatch(IsSearch(true,e.target.innerHTML));
-                return;
-            default:
-                return;
-        }
-    }
+
     onMenuTab(index){
         let path = this.state.menutabs[index].path;
         let searchkeyword = this.props.searchdefaultdata.IsSearch.Value;
@@ -95,7 +88,7 @@ class SearchResult extends React.Component{
         )
         return (
            <div>
-               <div onClick={(e) => {this.onSearchClick(e)}}>
+                <div>
                     {this.props.searchdefaultdata.IsSearch.IsSign ? SearchContent : SearchIng}
                 </div>
            </div>

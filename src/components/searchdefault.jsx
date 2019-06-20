@@ -14,22 +14,7 @@ class SearchDefault extends React.Component{
         this.props.dispatch(LoadData(GetSearchHot));
         this.props.dispatch(LoadSession());
     }
-    onSearchClick(e){
-        switch(e.target.className){
-            case 'search-keyword':
-                this.props.dispatch(IsSearch(true,e.target.innerHTML));
-                return; 
-            case 'label-word':
-                this.props.dispatch(IsSearch(true,e.target.innerHTML));
-                return;
-            case 'iconfont icon-qingkongshanchu':
-                localStorage.removeItem('SearchMusicHistory');
-                this.props.dispatch(LoadSession());
-                return;
-            default:
-                return;
-        }
-    }
+    
     render() {
         let getsearchhot = this.props.searchdefaultdata.GetSearchHot.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchHot.result : {};
         let getsearchsuggest = this.props.searchdefaultdata.GetSearchSuggest.hasOwnProperty('result') ? this.props.searchdefaultdata.GetSearchSuggest.result : {};
@@ -87,7 +72,7 @@ class SearchDefault extends React.Component{
                </div>
             )
         return (
-           <div onClick={(e) => {this.onSearchClick(e)}}>
+            <div>
                {
                    this.props.searchdefaultdata.IsSearch.IsSign ? SearchDefault : SearchIng
                }

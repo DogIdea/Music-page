@@ -12,12 +12,12 @@ export const LoadDataSuccess = (data,name) =>{
         data:{name,data}
     }
 }
+
 export const LoadDataFailure = () =>{
     return {
         type:types.GET_DATA_FAILURE,
     }
 }
-
 
 export function LoadData(fn,value='') {
     return dispatch => {
