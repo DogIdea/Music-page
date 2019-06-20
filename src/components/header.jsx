@@ -39,6 +39,7 @@ class Header extends React.Component{
             
         }
     }
+    
     render() {
         let HeaderMessage,HeaderIcon;
         if (this.props.sign.name === 'home') {
@@ -59,7 +60,7 @@ class Header extends React.Component{
             let inputvalue = this.props.searchdefaultdata.IsSearch.Value
             HeaderMessage = (
                 <div className="header-message" >
-                    <input type="text" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)} value={inputvalue ? inputvalue : ""} onFocus={(e)=> this.onSearchFocus(e)}/>
+                    <input type="text" className="text-input-import" placeholder="请输入关键词..." onChange={(e) => {this.onIsSearch(e)}} onKeyDown={(e)=> this.onKeydown(e)} value={inputvalue ? inputvalue : ""} onFocus={(e)=> this.onSearchFocus(e)}/>
                 </div>
             )
             HeaderIcon = (

@@ -6,7 +6,7 @@ import { IsSearch,LoadSession } from '../actions/searchdata-action.jsx';
 import { connect } from 'react-redux';
 class Search extends React.Component{
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             sign:{
                 name:'search',
@@ -14,8 +14,9 @@ class Search extends React.Component{
             },
             IsSearch:true
         }
-        this.headerSearch = React.createRef();
+        
     }
+
     onSearch(path){
         this.props.history.push(path);
     }
@@ -23,10 +24,11 @@ class Search extends React.Component{
     onSearchClick(e){
         switch(e.target.className){
             case 'search-keyword':
+                document.getElementsByClassName('text-input-import')[0].focus();
                 this.props.dispatch(IsSearch(true,e.target.innerHTML));
-                console.log(this.headerSearch)
                 return;
             case 'label-word':
+                    document.getElementsByClassName('text-input-import')[0].focus();
                 this.props.dispatch(IsSearch(true,e.target.innerHTML));
                 return;
             case 'iconfont icon-qingkongshanchu':
@@ -42,7 +44,7 @@ class Search extends React.Component{
         return (
         <div>
             <div className="search-header">
-              <Header sign={this.state.sign} onSearch={(path) => {this.onSearch(path)}} ref={this.headerSearch}></Header>
+              <Header sign={this.state.sign} onSearch={(path) => {this.onSearch(path)}} ></Header>
             </div>
             <div className="search-body" onClick={(e) => {this.onSearchClick(e)}}>
                 {this.props.children}
